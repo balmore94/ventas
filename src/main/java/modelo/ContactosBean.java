@@ -1,14 +1,84 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
-/**
- *
- * @author ronald.reyesusam
- */
+import java.util.Date;
+
 public class ContactosBean {
+    private int id_contacto;
+    private TipoContactoBean id_tipo;
+    private EmpresaBean id_empresa;
+    private String nombre;
+    private String apellido;
+    private String email;
+    private String telefono;
+    private Date fecha_ingreso;
+
+    public ContactosBean(int id_contacto) {
+        this.id_contacto = id_contacto;
+    }
+
+    public int getId_contacto() {
+        return id_contacto;
+    }
+
+    public void setId_contacto(int id_contacto) {
+        this.id_contacto = id_contacto;
+    }
+
+    public TipoContactoBean getId_tipo() {
+        return id_tipo;
+    }
+
+    public void setId_tipo(TipoContactoBean id_tipo) {
+        this.id_tipo = id_tipo;
+    }
+
+    public EmpresaBean getId_empresa() {
+        return id_empresa;
+    }
+
+    public void setId_empresa(EmpresaBean id_empresa) {
+        this.id_empresa = id_empresa;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public Date getFecha_ingreso() {
+        return fecha_ingreso;
+    }
+
+    public void setFecha_ingreso(Date fecha_ingreso) {
+        this.fecha_ingreso = fecha_ingreso;
+    }
+    
     
 }
