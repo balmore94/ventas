@@ -2,6 +2,7 @@ package conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 
 public class Conexion {
@@ -32,6 +33,10 @@ public Connection conectar(){
 public void desconecta ()throws Exception{
 conn.close();
 }
+
+    public PreparedStatement prepareCall(String call_sp_verificar_prestamo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 
  

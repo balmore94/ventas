@@ -1,6 +1,6 @@
 package modelo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ContactosBean {
     private int id_contacto;
