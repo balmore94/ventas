@@ -57,7 +57,7 @@ public class ContactosServlet extends HttpServlet {
         ContactosBean ct = new ContactosBean(0);
         TipoContactoBean tp = ct.getId_tipo();
         
-        ct.setId_tipo(idTipo);
+        ct.setId_tipo();
         
     }
     
