@@ -20,7 +20,7 @@ public class UsuarioDao {
             ps.setString(2, usb.getNombre());
             ps.setString(3, usb.getUsuario());
             ps.setString(4, usb.getEmail());
-            ps.setString(4, usb.getPassword());
+            ps.setString(5, usb.getPassword());
         } catch (Exception e) {
         }
     }
