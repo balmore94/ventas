@@ -27,6 +27,4 @@ public class UsuarioDao {
         }
     }
     
-    List<UsuarioBean> findAll(){
-    }
 }
