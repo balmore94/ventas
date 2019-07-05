@@ -16,6 +16,7 @@ public class ContactosDao {
     }
     
     public boolean insertar(ContactosBean ctb){
+        
         TipoContactoBean tpcb = ctb.getId_tipo();
         EmpresaBean emb = ctb.getId_empresa();
         PaisBean pab = emb.getId_pais();

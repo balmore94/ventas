@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.ContactosBean;
+import modelo.EmpresaBean;
+import modelo.PaisBean;
 import modelo.TipoContactoBean;
 
 @WebServlet(name = "ContactosServlet", urlPatterns = {"/contactos"})
@@ -36,7 +38,7 @@ public class ContactosServlet extends HttpServlet {
     protected void insertar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        int idContacto = Integer.parseInt(request.getParameter("id_contacto"));
+        //int idContacto = Integer.parseInt(request.getParameter("id_contacto"));
         int idTipo = Integer.parseInt(request.getParameter("id_tipo"));
         String nombreContacto = request.getParameter("nombre_contacto");
         String apellidoContacto = request.getParameter("apellido_contacto");
@@ -56,8 +58,38 @@ public class ContactosServlet extends HttpServlet {
         
         ContactosBean ct = new ContactosBean(0);
         TipoContactoBean tp = ct.getId_tipo();
+        EmpresaBean emp = new EmpresaBean(0);
+        PaisBean pa = emp.getId_pais();
         
-        ct.setId_tipo();
+        emp.setId_pais(pa);
+        emp.setNombre(nomEmpresa);
+        emp.setNit_empresa(nit);
+        emp.setPagina_web(pagWeb);
+        emp.setTelefono(telEmp);
+        emp.setCalle(calle);
+        emp.setCiudad(ciudad);
+        emp.setRegion_provincia(regpro);
+        emp.setCodigo_postal(cp);
+        
+        
+        
+        ct.setId_tipo(tp);
+        ct.setNombre(nombreContacto);
+        ct.setApellido(apellidoContacto);
+        ct.setEmail(emailContacto);
+        ct.setTelefono(telefonoContacto);
+        ct.setFecha_ingreso(sql);
+        ct.setId_empresa(emp);
+        
+        respuesta = ctd.insertar(ct);
+        if (respuesta) {
+            msg = "Registro guardado";
+        }else{
+            msg = "Error al guardar";
+        }
+        request.setAttribute("msg", msg);
+        rd = request.getRequestDispatcher("registro.jsp");
+        rd.forward(request, response);
         
     }
     
