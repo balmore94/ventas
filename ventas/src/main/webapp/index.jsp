@@ -135,7 +135,7 @@
               </a>
               <ul class="treeview-menu">
         
-                <li class=""><a href="customers.php"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
+                <li class=""><a href="/contactos?action=cliente"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
               
                 <li class=""><a href="supplier.php"><i class="glyphicon glyphicon-briefcase"></i> Proveedores</a></li>
         

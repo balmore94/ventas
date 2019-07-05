@@ -5,6 +5,7 @@ import dao.ContactosDao;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -32,6 +33,10 @@ public class ContactosServlet extends HttpServlet {
         
         switch(action){
             case "insertar":insertar(request, response);
+                break;
+            case "cliente":clientes(request, response);
+                break;
+            
         }
     }
     
@@ -62,10 +67,10 @@ public class ContactosServlet extends HttpServlet {
         PaisBean pa = emp.getId_pais();
         
         emp.setId_pais(pa);
-        emp.setNombre(nomEmpresa);
+        emp.setNombre_empresa(nomEmpresa);
         emp.setNit_empresa(nit);
         emp.setPagina_web(pagWeb);
-        emp.setTelefono(telEmp);
+        emp.setTelefono_empresa(telEmp);
         emp.setCalle(calle);
         emp.setCiudad(ciudad);
         emp.setRegion_provincia(regpro);
@@ -92,7 +97,13 @@ public class ContactosServlet extends HttpServlet {
         rd.forward(request, response);
         
     }
-    
+    protected void clientes(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        List<ContactosBean> lista = ctd.allClientes();
+        request.setAttribute("lista", lista);
+        rd = request.getRequestDispatcher("index.jsp");
+        rd.forward(request, response);
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

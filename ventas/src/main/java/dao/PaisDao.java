@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.LinkedList;
 import java.util.List;
 import modelo.PaisBean;
-import modelo.UsuarioBean;
+
 
 public class PaisDao {
  

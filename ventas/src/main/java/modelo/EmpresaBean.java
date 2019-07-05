@@ -3,10 +3,10 @@ package modelo;
 public class EmpresaBean {
     private int id_empresa;
     private PaisBean id_pais;
-    private String nombre;
+    private String nombre_empresa;
     private String nit_empresa;
     private String pagina_web;
-    private String telefono;
+    private String telefono_empresa;
     private String calle;
     private String ciudad;
     private String region_provincia;
@@ -32,13 +32,23 @@ public class EmpresaBean {
         this.id_pais = id_pais;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombre_empresa() {
+        return nombre_empresa;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre_empresa(String nombre_empresa) {
+        this.nombre_empresa = nombre_empresa;
     }
+
+    public String getTelefono_empresa() {
+        return telefono_empresa;
+    }
+
+    public void setTelefono_empresa(String telefono_empresa) {
+        this.telefono_empresa = telefono_empresa;
+    }
+
+    
 
     public String getNit_empresa() {
         return nit_empresa;
@@ -56,13 +66,6 @@ public class EmpresaBean {
         this.pagina_web = pagina_web;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
 
     public String getCalle() {
         return calle;
