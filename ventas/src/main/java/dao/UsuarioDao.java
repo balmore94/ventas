@@ -25,8 +25,13 @@ public class UsuarioDao {
             ps.setString(2, usb.getNombre());
             ps.setString(3, usb.getUsuario());
             ps.setString(4, usb.getEmail());
-            ps.setString(5, usb.getPassword());
-        
+            ps.setString(5, usb.getTipo_usu());
+            ps.setString(6, usb.getPassword());
+            ps.setString(7, usb.getGrupo());
+            ps.setDate(8, usb.getFecha_ingreso());
+            ps.setString(9, usb.getEstado());
+            ps.execute();
+            
         return true;
         } 
         catch (Exception e) {
@@ -40,7 +45,7 @@ public class UsuarioDao {
         try {
             PreparedStatement ps = conn.conectar().prepareStatement(sql);
             
-            ps.setInt(1, usub.getId_usuario());
+            ps.setString(1, usub.getEstado());
             ps.setString(2, usub.getNombre());
             ps.setString(3, usub.getUsuario());
             ps.setString(4, usub.getEmail());
@@ -48,7 +53,7 @@ public class UsuarioDao {
             ps.setString(6, usub.getPassword());
             ps.setString(7, usub.getGrupo());
             ps.setDate(8, usub.getFecha_ingreso());
-            ps.setString(9, usub.getEstado());
+            ps.setInt(9, usub.getId_usuario());
             ps.executeUpdate();
             return true;
         } catch (Exception e) {
