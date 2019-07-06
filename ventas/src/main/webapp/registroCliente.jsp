@@ -275,7 +275,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>País</label>
-                                                <select class="form-control" name="id_pais">
+                                                <select class="form-control" name="pyyais">
                                                     
                                                     <c:forEach items="${listaPais}" var="ver"> 
                                                     <option value="${ver.id_pais}">${ver.nombre}</option>
@@ -283,7 +283,11 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Código Postal:  </label>
+                                                <label>Pais:  </label>
+                                                <input class="form-control" name="pais">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Codigo  </label>
                                                 <input class="form-control" name="cp">
                                             </div>
                                         </div>

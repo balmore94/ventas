@@ -44,31 +44,36 @@ public class ContactosServlet extends HttpServlet {
     RequestDispatcher rd;
     boolean respuesta;
     String msg;
+    int res;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         String action = request.getParameter("action");
-        
-        switch(action){
-            case "allClientes":allClientes(request, response);
+
+        switch (action) {
+            case "allClientes":
+                allClientes(request, response);
                 break;
-            case "registroCliente":registroCliente(request, response);
+            case "registroCliente":
+                registroCliente(request, response);
                 break;
-            case "insertar":insertar(request, response);
+            case "insertar":
+                insertar(request, response);
                 break;
         }
     }
+
     protected void insertar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
-        
+
         //int idContacto = Integer.parseInt(request.getParameter("id_contacto"));
         int idTipo = Integer.parseInt(request.getParameter("id_tipo"));
         String nombreContacto = request.getParameter("nombre_cliente");
         String apellidoContacto = request.getParameter("apellido_cliente");
         String emailContacto = request.getParameter("correo");
         String telefonoContacto = request.getParameter("telefono_cliente");
-       
-        
-        int pais = Integer.parseInt(request.getParameter("id_pais"));
+
+        int pais = Integer.parseInt(request.getParameter("pais"));
         String nomEmpresa = request.getParameter("nombre_empresa");
         String nit = request.getParameter("nit_empresa");
         String pagWeb = request.getParameter("pag_web");
@@ -77,44 +82,49 @@ public class ContactosServlet extends HttpServlet {
         String ciudad = request.getParameter("ciudad");
         String regpro = request.getParameter("region");
         String cp = request.getParameter("cp");
-        
-        
-        
-        EmpresaBean empresa = new EmpresaBean(0);
-        PaisBean pa = empresa.getId_pais();
-        
-        empresa.setId_pais(pa);
-        empresa.setNombre_empresa(nomEmpresa);
-        empresa.setNit_empresa(nit);
-        empresa.setPagina_web(pagWeb);
-        empresa.setTelefono_empresa(telEmp);
-        empresa.setCalle(calle);
-        empresa.setCiudad(ciudad);
-        empresa.setRegion_provincia(regpro);
-        empresa.setCodigo_postal(cp);
-        
-        ContactosBean ctb = new ContactosBean(0);
-        TipoContactoBean t = ctb.getId_tipo_contacto();
-        
-        ctb.setId_tipo_contacto(t);
-        ctb.setId_empresa(empresa);
-        ctb.setNombre(nombreContacto);
-        ctb.setApellido(apellidoContacto);
-        ctb.setEmail(emailContacto);
-        ctb.setTelefono(telefonoContacto);
-        
-        System.out.println(idTipo+ nombreContacto+apellidoContacto+emailContacto+telefonoContacto+pais+nomEmpresa+nit+pagWeb+telEmp+calle+ciudad+regpro+cp);
-        int resultado  = ctd.insertar(ctb);
-        if (resultado == 1) {
-            msg = "Registro guardado" + resultado;
-        }else{
-            msg = "Error al guardar";
+
+        ContactosBean ct = new ContactosBean(0);
+        TipoContactoBean tipo = new TipoContactoBean(idTipo);
+        EmpresaBean emp = new EmpresaBean(0);
+        PaisBean pa = new PaisBean(pais);
+
+        emp.setId_pais(pa);
+        emp.setNombre_empresa(nomEmpresa);
+        emp.setNit_empresa(nit);
+        emp.setPagina_web(pagWeb);
+        emp.setTelefono_empresa(telEmp);
+        emp.setCalle(calle);
+        emp.setCiudad(ciudad);
+        emp.setRegion_provincia(regpro);
+        emp.setCodigo_postal(cp);
+
+        ct.setId_tipo_contacto(tipo);
+        ct.setNombre(nombreContacto);
+        ct.setId_empresa(emp);
+        ct.setApellido(apellidoContacto);
+        ct.setEmail(emailContacto);
+        ct.setTelefono(telefonoContacto);
+
+        respuesta = ctd.insertar(ct);
+        List<ContactosBean> lista = ctd.allClientes();
+
+        //System.out.println(pa.getId_pais());
+        if (respuesta) {
+            msg = "<div class=\"alert alert-success\" role=\"alert\">\n"
+                    + "  <strong>Bien hecho!</strong> Registro guardado correctamente\n"
+                    + "</div>";
+        } else {
+            msg = "<div class=\"alert alert-danger\" role=\"alert\">\n"
+                    + "  <strong>Error!</strong> Algo salió mal, intente de nuevo.\n"
+                    + "</div>";
         }
         request.setAttribute("msg", msg);
-        rd = request.getRequestDispatcher("registroCliente.jsp");
+        request.setAttribute("lista", lista);
+        rd = request.getRequestDispatcher("clientes.jsp");
         rd.forward(request, response);
-        
+
     }
+
     protected void allClientes(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<ContactosBean> lista = ctd.allClientes();
@@ -122,7 +132,7 @@ public class ContactosServlet extends HttpServlet {
         rd = request.getRequestDispatcher("clientes.jsp");
         rd.forward(request, response);
     }
-    
+
     protected void registroCliente(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         TipoContactoDao tp = new TipoContactoDao(conn);
@@ -134,6 +144,7 @@ public class ContactosServlet extends HttpServlet {
         rd = request.getRequestDispatcher("registroCliente.jsp");
         rd.forward(request, response);
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

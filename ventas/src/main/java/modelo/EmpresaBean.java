@@ -98,6 +98,8 @@ public class EmpresaBean {
     public void setCodigo_postal(String codigo_postal) {
         this.codigo_postal = codigo_postal;
     }
+
+    
     
     
 }
