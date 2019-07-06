@@ -108,7 +108,7 @@ public class ContactosServlet extends HttpServlet {
         respuesta = ctd.insertar(ct);
         List<ContactosBean> lista = ctd.allClientes();
 
-        //System.out.println(pa.getId_pais());
+        System.out.println(pa.getId_pais());
         if (respuesta) {
             msg = "<div class=\"alert alert-success\" role=\"alert\">\n"
                     + "  <strong>Bien hecho!</strong> Registro guardado correctamente\n"
