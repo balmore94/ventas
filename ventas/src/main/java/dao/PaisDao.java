@@ -53,16 +53,15 @@ public class PaisDao {
         try {
             PreparedStatement ps = conn.conectar().prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
-                List<PaisBean> lista = new LinkedList<>();
+                List<PaisBean> listaPais = new LinkedList<>();
                 PaisBean usub;
                 while(rs.next()){
-                    usub = new PaisBean(rs.getInt("id"));
-                    usub.setId_pais(rs.getInt("id_pais"));
+                    usub = new PaisBean(rs.getInt("id_pais"));
                     usub.setNombre(rs.getString("nombre"));
                     
-                    lista.add(usub);
+                    listaPais.add(usub);
                 }
-            return lista;
+            return listaPais;
         } catch (Exception e) {
             return null;
         }

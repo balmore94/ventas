@@ -226,7 +226,7 @@
                                     </div>
                                     <div class="col-xs-10 col-md-5 ">
                                         <div class="btn-group pull-right">
-                                            <a href="/contactos?action=registrCliente"><button type="button" class="btn btn-default"><i class='fa fa-plus'></i> Nuevo Cliente</button></a>
+                                            <a href="contactos?action=registroCliente"><button type="button" class="btn btn-default"><i class='fa fa-plus'></i> Nuevo Cliente</button></a>
                                         </div>
                                     </div>
                                     <input type='hidden' id='per_page' value='15'>
@@ -290,7 +290,7 @@
                 <div class="pull-right hidden-xs">
                     <b>Version</b> 2.4.12
                 </div>
-                <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+                <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">Java 13</a>.</strong> All rights
                 reserved.
             </footer>
 

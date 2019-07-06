@@ -135,7 +135,7 @@
               </a>
               <ul class="treeview-menu">
         
-                <li class=""><a href="/contactos?action=cliente"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
+                <li class=""><a href="contactos?action=allClientes"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
               
                 <li class=""><a href="supplier.php"><i class="glyphicon glyphicon-briefcase"></i> Proveedores</a></li>
         
@@ -212,7 +212,7 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
 
-
+          <a href="clientes?action=allClientes">Clientes</a>
         <!-- ./col -->
       </div>
 

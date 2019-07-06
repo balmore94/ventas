@@ -218,26 +218,73 @@
                                     </div>
                                     <!-- /.box-header -->
                                     <!-- form start -->
-                                    <form role="form">
+                                    <form role="form" action="contactos?action=insertar" method="POST">
                                         <div class="box-body">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                                <label>Tipo de Cliente</label>
+                                                <select class="form-control" name="id_tipo">
+                                                    
+                                                    <c:forEach items="${listaTipo}" var="ver"> 
+                                                    <option value="${ver.id_tipo}">${ver.tipo}</option>
+                                                     </c:forEach>
+                                                </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">Password</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                                <label>Nombres: </label>
+                                                <input class="form-control" name="nombre_cliente">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputFile">File input</label>
-                                                <input type="file" id="exampleInputFile">
-
-                                                <p class="help-block">Example block-level help text here.</p>
+                                                <label>Apellidos:  </label>
+                                                <input class="form-control" name="apellido_cliente">
                                             </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox"> Check me out
-                                                </label>
+                                            <div class="form-group">
+                                                <label>Correo:  </label>
+                                                <input class="form-control" name="correo">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Teléfono:  </label>
+                                                <input class="form-control" name="telefono_cliente">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nombre de la empresa:  </label>
+                                                <input class="form-control" name="nombre_empresa">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>NIT de la empresa:  </label>
+                                                <input class="form-control" name="nit_empresa">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Página web de la Empresa:  </label>
+                                                <input class="form-control" name="pag_web">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Teléfono de la empresa:  </label>
+                                                <input class="form-control" name="telefono_empresa">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Calle:  </label>
+                                                <input class="form-control" name="calle">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Ciudad:  </label>
+                                                <input class="form-control" name="ciudad">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Región/Provincia:  </label>
+                                                <input class="form-control" name="region">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>País</label>
+                                                <select class="form-control" name="id_pais">
+                                                    
+                                                    <c:forEach items="${listaPais}" var="ver"> 
+                                                    <option value="${ver.id_pais}">${ver.nombre}</option>
+                                                     </c:forEach>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Código Postal:  </label>
+                                                <input class="form-control" name="cp">
                                             </div>
                                         </div>
                                         <!-- /.box-body -->
@@ -246,6 +293,7 @@
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </form>
+                                    ${msg}
                                 </div>
                                 <!-- /.box -->
                             </div>

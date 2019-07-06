@@ -1,17 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controlador;
 
 import conexion.Conexion;
 import dao.ContactosDao;
+import dao.PaisDao;
+import dao.TipoContactoDao;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
-
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,88 +24,114 @@ import modelo.EmpresaBean;
 import modelo.PaisBean;
 import modelo.TipoContactoBean;
 
-@WebServlet(name = "ContactosServlet", urlPatterns = {"/contactos"})
+/**
+ *
+ * @author Balmore
+ */
 public class ContactosServlet extends HttpServlet {
-    Conexion conn;
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    Conexion conn = new Conexion();
     ContactosDao ctd = new ContactosDao(conn);
     RequestDispatcher rd;
-    String msg;
     boolean respuesta;
+    String msg;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         String action = request.getParameter("action");
         
         switch(action){
+            case "allClientes":allClientes(request, response);
+                break;
+            case "registroCliente":registroCliente(request, response);
+                break;
             case "insertar":insertar(request, response);
                 break;
-            case "cliente":clientes(request, response);
-                break;
-            
         }
     }
-    
     protected void insertar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        
         //int idContacto = Integer.parseInt(request.getParameter("id_contacto"));
         int idTipo = Integer.parseInt(request.getParameter("id_tipo"));
-        String nombreContacto = request.getParameter("nombre_contacto");
-        String apellidoContacto = request.getParameter("apellido_contacto");
-        String emailContacto = request.getParameter("email_contacto");
-        String telefonoContacto = request.getParameter("telefono_contacto");
-        java.util.Date parsed = formato.parse(request.getParameter("fecha_ingreso"));
-        java.sql.Date sql = new java.sql.Date(parsed.getTime());
+        String nombreContacto = request.getParameter("nombre_cliente");
+        String apellidoContacto = request.getParameter("apellido_cliente");
+        String emailContacto = request.getParameter("correo");
+        String telefonoContacto = request.getParameter("telefono_cliente");
+       
+        
         int pais = Integer.parseInt(request.getParameter("id_pais"));
         String nomEmpresa = request.getParameter("nombre_empresa");
         String nit = request.getParameter("nit_empresa");
-        String pagWeb = request.getParameter("pagina_web");
+        String pagWeb = request.getParameter("pag_web");
         String telEmp = request.getParameter("telefono_empresa");
         String calle = request.getParameter("calle");
         String ciudad = request.getParameter("ciudad");
         String regpro = request.getParameter("region");
-        String cp = request.getParameter("codigo");
-        
-        ContactosBean ct = new ContactosBean(0);
-        TipoContactoBean tp = ct.getId_tipo();
-        EmpresaBean emp = new EmpresaBean(0);
-        PaisBean pa = emp.getId_pais();
-        
-        emp.setId_pais(pa);
-        emp.setNombre_empresa(nomEmpresa);
-        emp.setNit_empresa(nit);
-        emp.setPagina_web(pagWeb);
-        emp.setTelefono_empresa(telEmp);
-        emp.setCalle(calle);
-        emp.setCiudad(ciudad);
-        emp.setRegion_provincia(regpro);
-        emp.setCodigo_postal(cp);
+        String cp = request.getParameter("cp");
         
         
         
-        ct.setId_tipo(tp);
-        ct.setNombre(nombreContacto);
-        ct.setApellido(apellidoContacto);
-        ct.setEmail(emailContacto);
-        ct.setTelefono(telefonoContacto);
-        ct.setFecha_ingreso(sql);
-        ct.setId_empresa(emp);
+        EmpresaBean empresa = new EmpresaBean(0);
+        PaisBean pa = empresa.getId_pais();
         
-        respuesta = ctd.insertar(ct);
-        if (respuesta) {
-            msg = "Registro guardado";
+        empresa.setId_pais(pa);
+        empresa.setNombre_empresa(nomEmpresa);
+        empresa.setNit_empresa(nit);
+        empresa.setPagina_web(pagWeb);
+        empresa.setTelefono_empresa(telEmp);
+        empresa.setCalle(calle);
+        empresa.setCiudad(ciudad);
+        empresa.setRegion_provincia(regpro);
+        empresa.setCodigo_postal(cp);
+        
+        ContactosBean ctb = new ContactosBean(0);
+        TipoContactoBean t = ctb.getId_tipo_contacto();
+        
+        ctb.setId_tipo_contacto(t);
+        ctb.setId_empresa(empresa);
+        ctb.setNombre(nombreContacto);
+        ctb.setApellido(apellidoContacto);
+        ctb.setEmail(emailContacto);
+        ctb.setTelefono(telefonoContacto);
+        
+        System.out.println(idTipo+ nombreContacto+apellidoContacto+emailContacto+telefonoContacto+pais+nomEmpresa+nit+pagWeb+telEmp+calle+ciudad+regpro+cp);
+        int resultado  = ctd.insertar(ctb);
+        if (resultado == 1) {
+            msg = "Registro guardado" + resultado;
         }else{
             msg = "Error al guardar";
         }
         request.setAttribute("msg", msg);
-        rd = request.getRequestDispatcher("registro.jsp");
+        rd = request.getRequestDispatcher("registroCliente.jsp");
         rd.forward(request, response);
         
     }
-    protected void clientes(HttpServletRequest request, HttpServletResponse response)
+    protected void allClientes(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<ContactosBean> lista = ctd.allClientes();
         request.setAttribute("lista", lista);
-        rd = request.getRequestDispatcher("index.jsp");
+        rd = request.getRequestDispatcher("clientes.jsp");
+        rd.forward(request, response);
+    }
+    
+    protected void registroCliente(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        TipoContactoDao tp = new TipoContactoDao(conn);
+        PaisDao pa = new PaisDao(conn);
+        List<TipoContactoBean> listaTipo = tp.findAllTipo();
+        List<PaisBean> listaPais = pa.consultarAll();
+        request.setAttribute("listaTipo", listaTipo);
+        request.setAttribute("listaPais", listaPais);
+        rd = request.getRequestDispatcher("registroCliente.jsp");
         rd.forward(request, response);
     }
     @Override
@@ -123,5 +153,4 @@ public class ContactosServlet extends HttpServlet {
             Logger.getLogger(ContactosServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }

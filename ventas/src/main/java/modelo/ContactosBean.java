@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class ContactosBean {
     private int id_contacto;
-    private TipoContactoBean id_tipo;
+    private TipoContactoBean id_tipo_contacto;
     private EmpresaBean id_empresa;
     private String nombre;
     private String apellido;
@@ -24,13 +24,15 @@ public class ContactosBean {
         this.id_contacto = id_contacto;
     }
 
-    public TipoContactoBean getId_tipo() {
-        return id_tipo;
+    public TipoContactoBean getId_tipo_contacto() {
+        return id_tipo_contacto;
     }
 
-    public void setId_tipo(TipoContactoBean id_tipo) {
-        this.id_tipo = id_tipo;
+    public void setId_tipo_contacto(TipoContactoBean id_tipo_contacto) {
+        this.id_tipo_contacto = id_tipo_contacto;
     }
+
+   
 
     public EmpresaBean getId_empresa() {
         return id_empresa;
