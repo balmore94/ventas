@@ -54,11 +54,14 @@ public class ContactosServlet extends HttpServlet {
             case "allClientes":
                 allClientes(request, response);
                 break;
-            case "registroCliente":
-                registroCliente(request, response);
-                break;
             case "insertar":
                 insertar(request, response);
+                break;
+            case "editar":
+                editar(request, response);
+                break;
+            case "eliminar":
+                eliminar(request, response);
                 break;
         }
     }
@@ -139,15 +142,33 @@ public class ContactosServlet extends HttpServlet {
         rd.forward(request, response);
     }
 
-    protected void registroCliente(HttpServletRequest request, HttpServletResponse response)
+    protected void editar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+    }
+
+    protected void eliminar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        ctd.eliminar(id);
+        if (respuesta) {
+            msg = "<div class=\"alert alert-success\" role=\"alert\">\n"
+                    + "  <strong>Exito!</strong> El registro fue eliminado<a href=\"#\" class=\"alert-link\">this important alert message</a>.\n"
+                    + "</div>";
+        } else {
+            msg = "<div class=\"alert alert-danger\" role=\"alert\">\n"
+                    + "  <strong>Oh snap!</strong> <a href=\"#\" class=\"alert-link\">Change a few things up</a> and try submitting again.\n"
+                    + "</div>";
+        }
         TipoContactoDao tp = new TipoContactoDao(conn);
         PaisDao pa = new PaisDao(conn);
         List<TipoContactoBean> listaTipo = tp.findAllTipo();
         List<PaisBean> listaPais = pa.consultarAll();
         request.setAttribute("listaTipo", listaTipo);
         request.setAttribute("listaPais", listaPais);
-        rd = request.getRequestDispatcher("registroCliente.jsp");
+        List<ContactosBean> lista = ctd.allClientes();
+        request.setAttribute("lista", lista);
+        rd = request.getRequestDispatcher("clientes.jsp");
         rd.forward(request, response);
     }
 

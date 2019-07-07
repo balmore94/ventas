@@ -213,24 +213,24 @@
                             <div class="box">
                                 <form role="form" action="contactos?action=insertar" method="POST">
                                     <div class="row">
-                                    <div class="col-xs-12 col-md-3">
-                                        <div class="input-group">
+                                        <div class="col-xs-12 col-md-3">
+                                            <div class="input-group">
 
-                                            </span>
-                                        </div><!-- /input-group -->
+                                                </span>
+                                            </div><!-- /input-group -->
 
-                                    </div>
-                                    <div class="col-md-3 hidden-xs"></div>
-                                    <div class="col-xs-2 col-md-1">
-                                        <div id="loader" class="text-center"></div>
-
-                                    </div>
-                                    <div class="col-xs-10 col-md-5 ">
-                                        <div class="btn-group pull-right">
-                                            <!--<a href="contactos?action=registroCliente"><button type="button" class=""> </button></a>-->
-                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class='fa fa-plus'></i>Nuevo Cliente</button>
                                         </div>
-                                        
+                                        <div class="col-md-3 hidden-xs"></div>
+                                        <div class="col-xs-2 col-md-1">
+                                            <div id="loader" class="text-center"></div>
+
+                                        </div>
+                                        <div class="col-xs-10 col-md-5 ">
+                                            <div class="btn-group pull-right">
+                                                <!--<a href="contactos?action=registroCliente"><button type="button" class=""> </button></a>-->
+                                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class='fa fa-plus'></i>Nuevo Cliente</button>
+                                            </div>
+
                                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -375,70 +375,74 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
 
                                     </div>
                                 </form>
-                                    <div class="box-header">
-                                        <h3 class="box-title">Listado de Clientes detallado</h3>
+                                <div class="box-header">
+                                    <h3 class="box-title">Listado de Clientes detallado</h3>
 
-                                    </div>
-                                    ${msg}
-                                    <!-- /.box-header -->
-                                    <div class="box-body">
-                                        <table id="example1" class="table table-bordered table-striped">
-                                            <thead>
+                                </div>
+                                ${msg}
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre Cliente</th>
+                                                <th>Correo</th>
+                                                <th>Teléfono</th>
+                                                <th>Empresa</th>
+                                                <th>Página Web</th>
+                                                <th>Teléfono Empresa</th>
+                                                <th>NIT Empresa</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:forEach items="${lista}" var="ver">
                                                 <tr>
-                                                    <th>Nombre Cliente</th>
-                                                    <th>Correo</th>
-                                                    <th>Teléfono</th>
-                                                    <th>Empresa</th>
-                                                    <th>Página Web</th>
-                                                    <th>Teléfono Empresa</th>
-                                                    <th>NIT Empresa</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <c:forEach items="${lista}" var="ver">
-                                                    <tr>
-                                                        <td>${ver.nombre} ${ver.apellido}</td>
-                                                        <td>${ver.email}</td>
-                                                        <td>${ver.telefono}</td>
-                                                        <td>${ver.id_empresa.nombre_empresa}</td>
-                                                        <td>${ver.id_empresa.pagina_web}</td>
-                                                        <td>${ver.id_empresa.telefono_empresa}</td>
-                                                        <td>${ver.id_empresa.nit_empresa}</td>
-                                                        <td>
+                                                    <td><i class="fa fa-user-circle-o" aria-hidden="true"></i>   ${ver.nombre} ${ver.apellido}</td>
+                                                    <td><i class="fa fa-envelope"></i>${ver.email}</td>
+                                                    <td><i class="fa fa-phone"></i>   ${ver.telefono}</td>
+                                                    <td><i class="fa fa-building" aria-hidden="true"></i>     ${ver.id_empresa.nombre_empresa}</td>
+                                                    <td><i class="fa fa-globe"></i>    ${ver.id_empresa.pagina_web}</td>
+                                                    <td><i class="fa fa-phone"></i>    ${ver.id_empresa.telefono_empresa}</td>
+                                                    <td><i class="fa fa-id-card" aria-hidden="true"></i>   ${ver.id_empresa.nit_empresa}</td>
+                                                    <td>
+                                                        <a href="contactos?action=editar&id=${ver.id_contacto}">
                                                             <button type="button" class="btn btn-default btn-sm">
                                                                 <span class="glyphicon glyphicon-edit"></span> Editar
                                                             </button>
+                                                        </a>
+                                                        <a href="contactos?action=eliminar&id=${ver.id_contacto}">
                                                             <button type="button" class="btn btn-default btn-sm">
                                                                 <span class="glyphicon glyphicon-remove-circle"></span> Eliminar
                                                             </button>
-                                                    </tr>
-                                                </c:forEach>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Nombre Cliente</th>
-                                                    <th>Correo</th>
-                                                    <th>Teléfono</th>
-                                                    <th>Empresa</th>
-                                                    <th>Página Web</th>
-                                                    <th>Teléfono Empresa</th>
-                                                    <th>NIT Empresa</th>
+                                                        </a>
                                                 </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                    <!-- /.box-body -->
+                                            </c:forEach>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Nombre Cliente</th>
+                                                <th>Correo</th>
+                                                <th>Teléfono</th>
+                                                <th>Empresa</th>
+                                                <th>Página Web</th>
+                                                <th>Teléfono Empresa</th>
+                                                <th>NIT Empresa</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
                                 </div>
-                                <!-- /.box -->
+                                <!-- /.box-body -->
                             </div>
-                            <!-- /.col -->
+                            <!-- /.box -->
                         </div>
-                        <!-- /.row -->
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
                 </section>
                 <!-- /.content -->
             </div>

@@ -103,4 +103,15 @@ public class ContactosDao {
         }
     }
 
+    public boolean eliminar(int id){
+        String sql = "DELETE FROM contactos WHERE id_contacto = ?";
+        try {
+            PreparedStatement ps = conn.conectar().prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
