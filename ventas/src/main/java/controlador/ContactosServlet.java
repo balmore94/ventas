@@ -127,6 +127,12 @@ public class ContactosServlet extends HttpServlet {
 
     protected void allClientes(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        TipoContactoDao tp = new TipoContactoDao(conn);
+        PaisDao pa = new PaisDao(conn);
+        List<TipoContactoBean> listaTipo = tp.findAllTipo();
+        List<PaisBean> listaPais = pa.consultarAll();
+        request.setAttribute("listaTipo", listaTipo);
+        request.setAttribute("listaPais", listaPais);
         List<ContactosBean> lista = ctd.allClientes();
         request.setAttribute("lista", lista);
         rd = request.getRequestDispatcher("clientes.jsp");
