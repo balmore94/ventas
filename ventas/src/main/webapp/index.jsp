@@ -118,7 +118,7 @@
         </ul>
             </li>
       <li class="">
-              <a href="products.php">
+              <a href="productos?action=allProductos">
                 <i class="glyphicon glyphicon-th-large"></i> <span>Productos</span>
               </a>
             </li>
@@ -137,7 +137,7 @@
         
                 <li class=""><a href="contactos?action=allClientes"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
               
-                <li class=""><a href="supplier.php"><i class="glyphicon glyphicon-briefcase"></i> Proveedores</a></li>
+                <li class=""><a href="contactos?action=allProveedores"><i class="glyphicon glyphicon-briefcase"></i> Proveedores</a></li>
         
               </ul>
             </li>
@@ -212,7 +212,7 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
 
-          <a href="clientes?action=allClientes">Clientes</a>
+          
         <!-- ./col -->
       </div>
 

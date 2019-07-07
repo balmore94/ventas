@@ -3,7 +3,7 @@ package modelo;
 public class ProductosBean {
     private int id_producto;
     private FabricanteBean id_fabricante;
-    private int codigo;
+    private String codigo;
     private String imagen;
     private String modelo;
     private String nombre;
@@ -36,13 +36,15 @@ public class ProductosBean {
         this.id_fabricante = id_fabricante;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
+
+    
 
     public String getImagen() {
         return imagen;

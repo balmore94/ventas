@@ -4,9 +4,17 @@
         <servlet-name>ContactosServlet</servlet-name>
         <servlet-class>controlador.ContactosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductosServlet</servlet-name>
+        <servlet-class>controlador.ProductosServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ContactosServlet</servlet-name>
         <url-pattern>/contactos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductosServlet</servlet-name>
+        <url-pattern>/productos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

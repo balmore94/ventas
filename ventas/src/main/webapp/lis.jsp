@@ -1,6 +1,6 @@
 <%-- 
-    Document   : tabla
-    Created on : 05-jul-2019, 12:26:40
+    Document   : lis
+    Created on : 07-jul-2019, 12:00:37
     Author     : Balmore
 --%>
 
@@ -16,17 +16,16 @@
         <table border="1">
             <thead>
                 <tr>
-                    <th>id </th>
-                    <th>nombre</th>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${lista}" var="ver">
-                <tr>
-                    <td>${ver.id_contacto}</td>
-                    <td>${ver.nombre}</td>
-                </tr>
-            </c:forEach>    
+                <c:forEach items="lista" var="ver">
+                    <tr>
+                        <td>${ver.nombre}</td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
 

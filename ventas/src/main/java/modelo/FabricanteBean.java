@@ -3,12 +3,12 @@ package modelo;
 import java.util.Date;
 
 public class FabricanteBean {
-    
-private int id_fabricante;   
-private String nombre;  
-private int numero_producto; 
-private String estado;  
-private Date fecha_ingreso; 
+
+    private int id_fabricante;
+    private String nombre_fabricante;
+    private int numero_producto;
+    private String estado;
+    private Date fecha_ingreso;
 
     public FabricanteBean(int id_fabricante) {
         this.id_fabricante = id_fabricante;
@@ -22,13 +22,15 @@ private Date fecha_ingreso;
         this.id_fabricante = id_fabricante;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombre_fabricante() {
+        return nombre_fabricante;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre_fabricante(String nombre_fabricante) {
+        this.nombre_fabricante = nombre_fabricante;
     }
+
+    
 
     public int getNumero_producto() {
         return numero_producto;
@@ -54,6 +56,4 @@ private Date fecha_ingreso;
         this.fecha_ingreso = fecha_ingreso;
     }
 
-
-    
 }

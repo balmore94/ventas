@@ -74,22 +74,25 @@ public class ContactosDao {
         }
     }
     public List<ContactosBean> allClientes() {
-        String sql = "SELECT contactos.id_contacto, contactos.nombre, contactos.apellido, contactos.email, contactos.telefono,empresa.id_empresa, empresa.nombre_empresa, empresa.pagina_web, empresa.telefono_empresa, empresa.nit_empresa FROM contactos INNER JOIN empresa ON contactos.id_empresa = empresa.id_empresa WHERE contactos.id_tipo = 2";
+        String sql = "SELECT contactos.id_contacto, contactos.id_tipo_contacto, contactos.nombre, contactos.apellido, contactos.email, contactos.telefono,empresa.id_empresa, empresa.nombre_empresa, empresa.pagina_web, empresa.telefono_empresa, empresa.nit_empresa FROM contactos INNER JOIN empresa ON contactos.id_empresa = empresa.id_empresa WHERE contactos.id_tipo_contacto = 2";
         try {
             PreparedStatement ps = conn.conectar().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             List<ContactosBean> lista = new LinkedList<>();
             ContactosBean ctb;
+            TipoContactoBean tp;
             while (rs.next()) {
                 EmpresaBean emb;
                 ctb = new ContactosBean(rs.getInt("id_contacto"));
                 emb = new EmpresaBean(rs.getInt("id_empresa"));
-
+                tp = new TipoContactoBean(rs.getInt("id_tipo_contacto"));
+                
                 emb.setNombre_empresa(rs.getString("nombre_empresa"));
                 emb.setPagina_web(rs.getString("pagina_web"));
                 emb.setTelefono_empresa(rs.getString("telefono_empresa"));
                 emb.setNit_empresa(rs.getString("nit_empresa"));
-
+                
+                ctb.setId_tipo_contacto(tp);
                 ctb.setNombre(rs.getString("nombre"));
                 ctb.setApellido(rs.getString("apellido"));
                 ctb.setEmail(rs.getString("email"));
@@ -102,7 +105,40 @@ public class ContactosDao {
             return null;
         }
     }
+    
+    public List<ContactosBean> allProveedores() {
+        String sql = "SELECT contactos.id_contacto, contactos.id_tipo_contacto, contactos.nombre, contactos.apellido, contactos.email, contactos.telefono,empresa.id_empresa, empresa.nombre_empresa, empresa.pagina_web, empresa.telefono_empresa, empresa.nit_empresa FROM contactos INNER JOIN empresa ON contactos.id_empresa = empresa.id_empresa WHERE contactos.id_tipo_contacto = 1";
+        try {
+            PreparedStatement ps = conn.conectar().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            List<ContactosBean> lista = new LinkedList<>();
+            ContactosBean ctb;
+            TipoContactoBean tp;
+            while (rs.next()) {
+                EmpresaBean emb;
+                ctb = new ContactosBean(rs.getInt("id_contacto"));
+                emb = new EmpresaBean(rs.getInt("id_empresa"));
+                tp = new TipoContactoBean(rs.getInt("id_tipo_contacto"));
+                
+                emb.setNombre_empresa(rs.getString("nombre_empresa"));
+                emb.setPagina_web(rs.getString("pagina_web"));
+                emb.setTelefono_empresa(rs.getString("telefono_empresa"));
+                emb.setNit_empresa(rs.getString("nit_empresa"));
 
+                ctb.setId_tipo_contacto(tp);
+                ctb.setNombre(rs.getString("nombre"));
+                ctb.setApellido(rs.getString("apellido"));
+                ctb.setEmail(rs.getString("email"));
+                ctb.setTelefono(rs.getString("telefono"));
+                ctb.setId_empresa(emb);
+                lista.add(ctb);
+            }
+            return lista;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
     public boolean eliminar(int id){
         String sql = "DELETE FROM contactos WHERE id_contacto = ?";
         try {

@@ -54,6 +54,9 @@ public class ContactosServlet extends HttpServlet {
             case "allClientes":
                 allClientes(request, response);
                 break;
+            case "allProveedores":
+                allProveedores(request, response);
+                break;
             case "insertar":
                 insertar(request, response);
                 break;
@@ -63,6 +66,9 @@ public class ContactosServlet extends HttpServlet {
             case "eliminar":
                 eliminar(request, response);
                 break;
+            default:
+                allClientes(request, response);
+                
         }
     }
 
@@ -70,6 +76,7 @@ public class ContactosServlet extends HttpServlet {
             throws ServletException, IOException, ParseException {
 
         //int idContacto = Integer.parseInt(request.getParameter("id_contacto"));
+        int tipo_contacto = Integer.parseInt(request.getParameter("tipo"));
         int idTipo = Integer.parseInt(request.getParameter("id_tipo"));
         String nombreContacto = request.getParameter("nombre_cliente");
         String apellidoContacto = request.getParameter("apellido_cliente");
@@ -87,7 +94,7 @@ public class ContactosServlet extends HttpServlet {
         String cp = request.getParameter("cp");
 
         ContactosBean ct = new ContactosBean(0);
-        TipoContactoBean tipo = new TipoContactoBean(idTipo);
+        TipoContactoBean tip = new TipoContactoBean(idTipo);
         EmpresaBean emp = new EmpresaBean(0);
         PaisBean pa = new PaisBean(pais);
 
@@ -101,7 +108,7 @@ public class ContactosServlet extends HttpServlet {
         emp.setRegion_provincia(regpro);
         emp.setCodigo_postal(cp);
 
-        ct.setId_tipo_contacto(tipo);
+        ct.setId_tipo_contacto(tip);
         ct.setNombre(nombreContacto);
         ct.setId_empresa(emp);
         ct.setApellido(apellidoContacto);
@@ -109,21 +116,29 @@ public class ContactosServlet extends HttpServlet {
         ct.setTelefono(telefonoContacto);
 
         respuesta = ctd.insertar(ct);
-        List<ContactosBean> lista = ctd.allClientes();
-
-        System.out.println(pa.getId_pais());
         if (respuesta) {
             msg = "<div class=\"alert alert-success\" role=\"alert\">\n"
-                    + "  <strong>Bien hecho!</strong> Registro guardado correctamente\n"
-                    + "</div>";
-        } else {
-            msg = "<div class=\"alert alert-danger\" role=\"alert\">\n"
-                    + "  <strong>Error!</strong> Algo salió mal, intente de nuevo.\n"
+                    + "  <strong>Exito!</strong> El registro fue guardado<a href=\"#\" class=\"alert-link\">this important alert message</a>.\n"
                     + "</div>";
         }
-        request.setAttribute("msg", msg);
-        request.setAttribute("lista", lista);
-        rd = request.getRequestDispatcher("clientes.jsp");
+        if (tipo_contacto == 1) {
+            String tipo = "Proveedor";
+            
+            List<ContactosBean> lista = ctd.allProveedores();
+            request.setAttribute("tipo_con", tipo_contacto);
+            request.setAttribute("msg", msg);
+            request.setAttribute("lista", lista);
+            request.setAttribute("tipo", tipo);
+            
+        }else{
+            String tipo = "Cliente";
+            List<ContactosBean> lista = ctd.allClientes();
+            request.setAttribute("tipo_con", tipo_contacto);
+            request.setAttribute("msg", msg);
+            request.setAttribute("lista", lista);
+            request.setAttribute("tipo", tipo);
+        }
+        rd = request.getRequestDispatcher("contactos.jsp");
         rd.forward(request, response);
 
     }
@@ -134,14 +149,38 @@ public class ContactosServlet extends HttpServlet {
         PaisDao pa = new PaisDao(conn);
         List<TipoContactoBean> listaTipo = tp.findAllTipo();
         List<PaisBean> listaPais = pa.consultarAll();
+        String tipo = "Clientes";
+        int tipo_con = 2;
+        request.setAttribute("tipo", tipo);
+        request.setAttribute("tipo_con", tipo_con);
+        request.setAttribute("tipo", tipo);
         request.setAttribute("listaTipo", listaTipo);
         request.setAttribute("listaPais", listaPais);
+        
         List<ContactosBean> lista = ctd.allClientes();
         request.setAttribute("lista", lista);
-        rd = request.getRequestDispatcher("clientes.jsp");
+        rd = request.getRequestDispatcher("contactos.jsp");
         rd.forward(request, response);
     }
-
+    
+    protected void allProveedores(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        TipoContactoDao tp = new TipoContactoDao(conn);
+        PaisDao pa = new PaisDao(conn);
+        List<TipoContactoBean> listaTipo = tp.findAllTipo();
+        List<PaisBean> listaPais = pa.consultarAll();
+        String tipo = "Proveedor";
+        int tipo_con = 1;
+        request.setAttribute("tipo", tipo);
+        request.setAttribute("tipo_con", tipo_con);
+        request.setAttribute("listaTipo", listaTipo);
+        request.setAttribute("listaPais", listaPais);
+        List<ContactosBean> lista = ctd.allProveedores();
+        request.setAttribute("lista", lista);
+        rd = request.getRequestDispatcher("contactos.jsp");
+        rd.forward(request, response);
+    }
+    
     protected void editar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -150,10 +189,11 @@ public class ContactosServlet extends HttpServlet {
     protected void eliminar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
+        int tipo_contacto = Integer.parseInt(request.getParameter("tipo"));
         ctd.eliminar(id);
         if (respuesta) {
             msg = "<div class=\"alert alert-success\" role=\"alert\">\n"
-                    + "  <strong>Exito!</strong> El registro fue eliminado<a href=\"#\" class=\"alert-link\">this important alert message</a>.\n"
+                    + "  <strong>Exito!</strong> El registro fue eliminado\n"
                     + "</div>";
         } else {
             msg = "<div class=\"alert alert-danger\" role=\"alert\">\n"
@@ -166,9 +206,21 @@ public class ContactosServlet extends HttpServlet {
         List<PaisBean> listaPais = pa.consultarAll();
         request.setAttribute("listaTipo", listaTipo);
         request.setAttribute("listaPais", listaPais);
-        List<ContactosBean> lista = ctd.allClientes();
-        request.setAttribute("lista", lista);
-        rd = request.getRequestDispatcher("clientes.jsp");
+        if (tipo_contacto == 1) {
+            String tipo = "Proveedor";
+            List<ContactosBean> lista = ctd.allProveedores();
+            request.setAttribute("lista", lista);
+            request.setAttribute("tipo", tipo);
+            
+        }else{
+            String tipo = "Cliente";
+            List<ContactosBean> lista = ctd.allClientes();
+            request.setAttribute("lista", lista);
+            request.setAttribute("tipo", tipo);
+        }
+        
+        
+        rd = request.getRequestDispatcher("contactos.jsp");
         rd.forward(request, response);
     }
 

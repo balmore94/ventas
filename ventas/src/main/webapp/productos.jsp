@@ -119,7 +119,7 @@
                             </ul>
                         </li>
                         <li class="">
-                            <a href="products.php">
+                            <a href="productos?action=allProductos">
                                 <i class="glyphicon glyphicon-th-large"></i> <span>Productos</span>
                             </a>
                         </li>
@@ -138,7 +138,7 @@
 
                                 <li class=""><a href="contactos?action=clientes"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
 
-                                <li class=""><a href="supplier.php"><i class="glyphicon glyphicon-briefcase"></i> Proveedores</a></li>
+                                <li class=""><a href="contactos?action=allProveedores"><i class="glyphicon glyphicon-briefcase"></i> Proveedores</a></li>
 
                             </ul>
                         </li>
@@ -200,8 +200,8 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Clientes
-                        <small>Listado de Clientes</small>
+                        Productos
+                        <small>Listado de Productos</small>
                     </h1>
                 </section>
 
@@ -211,176 +211,9 @@
 
                         <div class="col-xs-12">
                             <div class="box">
-                                <form role="form" action="contactos?action=insertar" method="POST">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-md-3">
-                                            <div class="input-group">
 
-                                                </span>
-                                            </div><!-- /input-group -->
-
-                                        </div>
-                                        <div class="col-md-3 hidden-xs"></div>
-                                        <div class="col-xs-2 col-md-1">
-                                            <div id="loader" class="text-center"></div>
-
-                                        </div>
-                                        <div class="col-xs-10 col-md-5 ">
-                                            <div class="btn-group pull-right">
-                                                <!--<a href="contactos?action=registroCliente"><button type="button" class=""> </button></a>-->
-                                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class='fa fa-plus'></i>Nuevo Cliente</button>
-                                            </div>
-
-                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title">Nuevo Cliente</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-
-
-                                                            <div class="nav-tabs-custom">
-                                                                <ul class="nav nav-tabs">
-                                                                    <li class="active"><a href="#activity" data-toggle="tab">Empresa</a></li>
-                                                                    <li><a href="#timeline" data-toggle="tab">Contacto</a></li>
-                                                                    <li><a href="#settings" data-toggle="tab">Dirección</a></li>
-                                                                </ul>
-                                                                <div class="tab-content">
-                                                                    <div class="active tab-pane" id="activity">
-                                                                        <div class="form-group">
-                                                                            <label for="bussines_name" class="col-sm-3 control-label">Nombre</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="nombre_empresa" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="tax_number" class="col-sm-3 control-label" >NIT</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="nit_empresa">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="website" class="col-sm-3 control-label">Sitio Web</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="pag_web">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="work_phone" class="col-sm-3 control-label">Teléfono</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="telefono_empresa" required>
-                                                                            </div>
-                                                                        </div>
-
-
-
-
-
-
-
-                                                                    </div><!-- /.tab-pane -->
-                                                                    <div class="tab-pane" id="timeline">
-                                                                        <div class="form-group">
-                                                                            <label for="tipo" class="col-sm-3 control-label">Tipo</label>
-                                                                            <div class="col-sm-9">
-                                                                                <select class="form-control" name="id_tipo">
-                                                                                    <option>Seleccione el tipo</option>
-                                                                                    <c:forEach items="${listaTipo}" var="ver">
-                                                                                        <option value="${ver.id_tipo}">${ver.tipo}</option>
-                                                                                    </c:forEach>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="first_name" class="col-sm-3 control-label">Nombres</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="nombre_cliente" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="last_name" class="col-sm-3 control-label">Apellidos</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="apellido_cliente" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="email" class="col-sm-3 control-label">Correo</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="email" class="form-control"name="correo">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="phone" class="col-sm-3 control-label">Teléfono</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="telefono_cliente" required>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div><!-- /.tab-pane -->
-
-                                                                    <div class="tab-pane" id="settings">
-
-                                                                        <div class="form-group">
-                                                                            <label for="address1" class="col-sm-3 control-label">Calle</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="calle">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="city" class="col-sm-3 control-label">Ciudad</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="ciudad">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="state" class="col-sm-3 control-label">Región/Provincia</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="region">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="postal_code" class="col-sm-3 control-label">Código Postal</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" id="postal_code" name="cp">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="address1" class="col-sm-3 control-label">País</label>
-                                                                            <div class="col-sm-9">
-                                                                                <select class='form-control' name="pais">
-                                                                                    <option>Seleccione un país</option>
-                                                                                    <c:forEach items="${listaPais}" var="ver">
-                                                                                        <option value="${ver.id_pais}">${ver.nombre}</option>
-                                                                                    </c:forEach>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-
-
-
-
-                                                                    </div><!-- /.tab-pane -->
-                                                                </div><!-- /.tab-content -->
-                                                            </div><!-- /.nav-tabs-custom -->
-
-
-                                                        </div>
-                                                        <br>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                            <button type="submit" id="guardar_datos" class="btn btn-primary">Registrar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </form>
                                 <div class="box-header">
-                                    <h3 class="box-title">Listado de Clientes detallado</h3>
+                                    <h3 class="box-title">Listado de productos detallado</h3>
 
                                 </div>
                                 ${msg}
@@ -389,38 +222,22 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Nombre Cliente</th>
-                                                <th>Correo</th>
-                                                <th>Teléfono</th>
-                                                <th>Empresa</th>
-                                                <th>Página Web</th>
-                                                <th>Teléfono Empresa</th>
-                                                <th>NIT Empresa</th>
-                                                <th></th>
+                                                <th>Código</th>
+                                                <th>Imagen</th>
+                                                <th>Modelo</th>
+                                                <th>Producto</th>
+                                                <th>Fabricante</th>
+                                                <th>Estado</th>
+                                                <th>Stock</th>
+                                                <th>Precio</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach items="${lista}" var="ver">
+                                            <c:forEach items="${listaProductos}" var="ver">
                                                 <tr>
-                                                    <td><i class="fa fa-user-circle-o" aria-hidden="true"></i>   ${ver.nombre} ${ver.apellido}</td>
-                                                    <td><i class="fa fa-envelope"></i>${ver.email}</td>
-                                                    <td><i class="fa fa-phone"></i>   ${ver.telefono}</td>
-                                                    <td><i class="fa fa-building" aria-hidden="true"></i>     ${ver.id_empresa.nombre_empresa}</td>
-                                                    <td><i class="fa fa-globe"></i>    ${ver.id_empresa.pagina_web}</td>
-                                                    <td><i class="fa fa-phone"></i>    ${ver.id_empresa.telefono_empresa}</td>
-                                                    <td><i class="fa fa-id-card" aria-hidden="true"></i>   ${ver.id_empresa.nit_empresa}</td>
-                                                    <td>
-                                                        <a href="contactos?action=editar&id=${ver.id_contacto}">
-                                                            <button type="button" class="btn btn-default btn-sm">
-                                                                <span class="glyphicon glyphicon-edit"></span> Editar
-                                                            </button>
-                                                        </a>
-                                                        <a href="contactos?action=eliminar&id=${ver.id_contacto}">
-                                                            <button type="button" class="btn btn-default btn-sm">
-                                                                <span class="glyphicon glyphicon-remove-circle"></span> Eliminar
-                                                            </button>
-                                                        </a>
-                                                </tr>
+                                                    <td>${ver.codigo}</td>
+
+                                                      </tr>
                                             </c:forEach>
                                         </tbody>
                                         <tfoot>
