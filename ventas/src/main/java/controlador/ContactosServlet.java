@@ -75,7 +75,7 @@ public class ContactosServlet extends HttpServlet {
     protected void insertar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
 
-        //int idContacto = Integer.parseInt(request.getParameter("id_contacto"));
+       //int idContacto = Integer.parseInt(request.getParameter("id_contacto"));
         int tipo_contacto = Integer.parseInt(request.getParameter("tipo"));
         int idTipo = Integer.parseInt(request.getParameter("id_tipo"));
         String nombreContacto = request.getParameter("nombre_cliente");

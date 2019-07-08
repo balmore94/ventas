@@ -43,7 +43,8 @@ public class ContactosDao {
                 }
 
                 idEmpresa = rs.getInt(1);
-                System.out.println(idEmpresa);
+                
+                //System.out.println(idEmpresa);
                 insertarContacto(ct);
             }
             
@@ -56,8 +57,7 @@ public class ContactosDao {
     public boolean insertarContacto(ContactosBean ct) {
         String sql = "insert into contactos values (?,?,?,?,?,?,?,now())";
         TipoContactoBean tipo = ct.getId_tipo_contacto();
-        System.out.println(tipo.getId_tipo());
-        System.out.println(idEmpresa);
+       
         try {
             PreparedStatement ps = conn.conectar().prepareStatement(sql);
             ps.setInt(1, ct.getId_contacto());
