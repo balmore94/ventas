@@ -1,0 +1,12 @@
+modelo\DetalleFacturacionBean.class
+modelo\FacturacionBean.class
+modelo\ContactosBean.class
+modelo\ProductosBean.class
+modelo\CompraBean.class
+modelo\PaisBean.class
+modelo\UsuarioBean.class
+modelo\EmpresaBean.class
+modelo\TipoContactoBean.class
+modelo\FabricanteBean.class
+modelo\DetalleCompraBean.class
+modelo\IvaBean.class

@@ -1,4 +1,4 @@
-package dao;
+    package dao;
 
 import conexion.Conexion;
 import java.sql.PreparedStatement;
@@ -21,7 +21,7 @@ public class IvaDao {
         try {
             PreparedStatement ps = conn.conectar().prepareStatement(sql);
             ps.setInt(1, ivb.getId_iva());
-            ps.setInt(2, ivb.getNombre());
+            ps.setString(2, ivb.getNombre());
             ps.setDouble(3, ivb.getValor());
             ps.setString(4, ivb.getEstado());
             ps.execute();
@@ -40,7 +40,7 @@ public class IvaDao {
             PreparedStatement ps = conn.conectar().prepareStatement(sql);
             
             ps.setString(1, ivd.getEstado());
-            ps.setInt(2, ivd.getNombre());
+            ps.setString(2, ivd.getNombre());
             ps.setDouble(3, ivd.getValor());
             ps.setInt(4, ivd.getId_iva());
             
@@ -62,7 +62,7 @@ public class IvaDao {
                 while(rs.next()){
                     ivbd = new IvaBean(rs.getInt("id"));
                     ivbd.setId_iva(rs.getInt("id_iva"));
-                    ivbd.setNombre(rs.getInt("nombre"));
+                    ivbd.setNombre(rs.getString("nombre"));
                     ivbd.setValor(rs.getDouble("valor"));
                     ivbd.setEstado(rs.getString("estado"));
                     

@@ -3,7 +3,7 @@ package modelo;
 public class IvaBean {
     
 private int id_iva;
-private int nombre;
+private String nombre;
 private double valor; 
 private String estado;
 
@@ -19,11 +19,11 @@ private String estado;
         this.id_iva = id_iva;
     }
 
-    public int getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(int nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
