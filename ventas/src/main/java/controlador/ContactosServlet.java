@@ -66,16 +66,20 @@ public class ContactosServlet extends HttpServlet {
             case "eliminar":
                 eliminar(request, response);
                 break;
+            case "mostrarEditar":
+                mostrarEditar(request, response);
+                break;
+
             default:
                 allClientes(request, response);
-                
+
         }
     }
 
     protected void insertar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
 
-       //int idContacto = Integer.parseInt(request.getParameter("id_contacto"));
+        //int idContacto = Integer.parseInt(request.getParameter("id_contacto"));
         int tipo_contacto = Integer.parseInt(request.getParameter("tipo"));
         int idTipo = Integer.parseInt(request.getParameter("id_tipo"));
         String nombreContacto = request.getParameter("nombre_cliente");
@@ -123,14 +127,14 @@ public class ContactosServlet extends HttpServlet {
         }
         if (tipo_contacto == 1) {
             String tipo = "Proveedor";
-            
+
             List<ContactosBean> lista = ctd.allProveedores();
             request.setAttribute("tipo_con", tipo_contacto);
             request.setAttribute("msg", msg);
             request.setAttribute("lista", lista);
             request.setAttribute("tipo", tipo);
-            
-        }else{
+
+        } else {
             String tipo = "Cliente";
             List<ContactosBean> lista = ctd.allClientes();
             request.setAttribute("tipo_con", tipo_contacto);
@@ -156,13 +160,13 @@ public class ContactosServlet extends HttpServlet {
         request.setAttribute("tipo", tipo);
         request.setAttribute("listaTipo", listaTipo);
         request.setAttribute("listaPais", listaPais);
-        
+
         List<ContactosBean> lista = ctd.allClientes();
         request.setAttribute("lista", lista);
         rd = request.getRequestDispatcher("contactos.jsp");
         rd.forward(request, response);
     }
-    
+
     protected void allProveedores(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         TipoContactoDao tp = new TipoContactoDao(conn);
@@ -180,9 +184,71 @@ public class ContactosServlet extends HttpServlet {
         rd = request.getRequestDispatcher("contactos.jsp");
         rd.forward(request, response);
     }
-    
+
+    protected void mostrarEditar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int idContacto = Integer.parseInt(request.getParameter("id"));
+        TipoContactoDao tp = new TipoContactoDao(conn);
+        List<TipoContactoBean> listaTipo = tp.findAllTipo();
+        
+  
+        List<ContactosBean> listaco = ctd.findById(idContacto) ;
+        ;
+        request.setAttribute("listaTipo", listaTipo);
+        request.setAttribute("listaco", listaco);
+        rd = request.getRequestDispatcher("actualizarContacto.jsp");
+        rd.forward(request, response);
+
+    }
+
     protected void editar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        int idContacto = Integer.parseInt(request.getParameter("id"));
+        int tipo_contacto = Integer.parseInt(request.getParameter("tipo"));
+        int idEmpresa = Integer.parseInt(request.getParameter("id_empresa"));
+        int idTipo = Integer.parseInt(request.getParameter("id_tipo"));
+        String nombreContacto = request.getParameter("nombre_cliente");
+        String apellidoContacto = request.getParameter("apellido_cliente");
+        String emailContacto = request.getParameter("correo");
+        String telefonoContacto = request.getParameter("telefono_cliente");
+
+        ContactosBean ct = new ContactosBean(idContacto);
+        TipoContactoBean tip = new TipoContactoBean(idTipo);
+        EmpresaBean emp = new EmpresaBean(idEmpresa);
+
+        ct.setId_tipo_contacto(tip);
+        ct.setNombre(nombreContacto);
+        ct.setId_empresa(emp);
+        ct.setApellido(apellidoContacto);
+        ct.setEmail(emailContacto);
+        ct.setTelefono(telefonoContacto);
+
+        respuesta = ctd.actualizarContactos(ct);
+        if (respuesta) {
+            msg = "<div class=\"alert alert-success\" role=\"alert\">\n"
+                    + "  <strong>Exito!</strong> El registro modificado<a href=\"#\" class=\"alert-link\">this important alert message</a>.\n"
+                    + "</div>";
+        }
+        if (tipo_contacto == 1) {
+            String tipo = "Proveedor";
+
+            List<ContactosBean> lista = ctd.allProveedores();
+            request.setAttribute("tipo_con", tipo_contacto);
+            request.setAttribute("msg", msg);
+            request.setAttribute("lista", lista);
+            request.setAttribute("tipo", tipo);
+
+        } else {
+            String tipo = "Cliente";
+            List<ContactosBean> lista = ctd.allClientes();
+            request.setAttribute("tipo_con", tipo_contacto);
+            request.setAttribute("msg", msg);
+            request.setAttribute("lista", lista);
+            request.setAttribute("tipo", tipo);
+        }
+        rd = request.getRequestDispatcher("actualizarContacto.jsp");
+        rd.forward(request, response);
 
     }
 
@@ -211,15 +277,14 @@ public class ContactosServlet extends HttpServlet {
             List<ContactosBean> lista = ctd.allProveedores();
             request.setAttribute("lista", lista);
             request.setAttribute("tipo", tipo);
-            
-        }else{
+
+        } else {
             String tipo = "Cliente";
             List<ContactosBean> lista = ctd.allClientes();
             request.setAttribute("lista", lista);
             request.setAttribute("tipo", tipo);
         }
-        
-        
+
         rd = request.getRequestDispatcher("contactos.jsp");
         rd.forward(request, response);
     }

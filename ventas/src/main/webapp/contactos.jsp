@@ -395,7 +395,7 @@
                                                     <td><i class="fa fa-id-card" aria-hidden="true"></i>   ${ver.id_empresa.nit_empresa}</td>
                                                     <td hidden="true">${ver.id_tipo_contacto.id_tipo}</td>
                                                     <td>
-                                                        <a href="contactos?action=editar&id=${ver.id_contacto}&tipo=${ver.id_tipo_contacto.id_tipo}">
+                                                        <a href="contactos?action=mostrarEditar&id=${ver.id_contacto}&tipo=${ver.id_tipo_contacto.id_tipo}">
                                                             <button type="button" class="btn btn-default btn-sm">
                                                                 <span class="glyphicon glyphicon-edit"></span> Editar
                                                             </button>
