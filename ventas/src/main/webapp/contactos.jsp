@@ -276,7 +276,7 @@
 
                                                                     </div><!-- /.tab-pane -->
                                                                     <div class="tab-pane" id="timeline">
-                                                                        <input name="id_tipo" value="${tipo_con}" />
+                                                                        <input name="id_tipo" hidden="true" value="${tipo_con}" />
                                                                         <div class="form-group">
                                                                             <label for="first_name" class="col-sm-3 control-label">Nombres</label>
                                                                             <div class="col-sm-9">
