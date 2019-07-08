@@ -8,6 +8,10 @@
         <servlet-name>ProductosServlet</servlet-name>
         <servlet-class>controlador.ProductosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>IvaServlet</servlet-name>
+        <servlet-class>controlador.IvaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ContactosServlet</servlet-name>
         <url-pattern>/contactos</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ProductosServlet</servlet-name>
         <url-pattern>/productos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IvaServlet</servlet-name>
+        <url-pattern>/iva</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

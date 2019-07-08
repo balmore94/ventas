@@ -218,6 +218,7 @@
                                     <option>10.00%</option>
                                     <option>15.00%</option>
                                     <option>20.00%</option>
+                                    <option>25.00%</option>
                                 </select>
                              </div>
                             </div>
