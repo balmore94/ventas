@@ -10,11 +10,12 @@ public class ProductosBean {
     private String estado;
     private int stock;
     private double precio_unitario;
+    private double precio_venta;
     private String presentacion;
     
     /*Cambiara a DECIMAL en DB*/
     private double ganancia;
-    private int codigo_barra;
+    private String codigo_barra;
 
     public ProductosBean(int id_producto) {
         this.id_producto = id_producto;
@@ -110,12 +111,20 @@ public class ProductosBean {
         this.ganancia = ganancia;
     }
 
-    public int getCodigo_barra() {
+    public String getCodigo_barra() {
         return codigo_barra;
     }
 
-    public void setCodigo_barra(int codigo_barra) {
+    public void setCodigo_barra(String codigo_barra) {
         this.codigo_barra = codigo_barra;
+    }
+
+    public double getPrecio_venta() {
+        return precio_venta;
+    }
+
+    public void setPrecio_venta(double precio_venta) {
+        this.precio_venta = precio_venta;
     }
     
     

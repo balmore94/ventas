@@ -196,88 +196,185 @@
             </aside>
 
             <!-- Content Wrapper. Contains page content -->
+
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>
-                        Productos
-                        <small>Listado de Productos</small>
-                    </h1>
-                </section>
+                    <h1><i class='fa fa-edit'></i> Agregar nuevo producto</h1>
 
+                </section>
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        ${msg}
-                        <div class="col-xs-12">
 
-                            <div class="box">
-                                
-                                <div class="box-header">
-                                    <h3 class="box-title">Listado de productos detallado</h3>
-                                    <div class="btn-group pull-right">
-                                    
-                                    <a href="productos?action=registroProducto"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class='fa fa-plus'></i>Nuevo </button></a>
-                                </div>
-                                </div>
-                                ${msg}
-                                <!-- /.box-header -->
-                                <div class="box-body">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th hidden="true">id</th>
-                                                <th>Código</th>
-                                                <th>Imágen</th>
-                                                <th>Modelo</th>
-                                                <th>Procucto</th>
-                                                <th hidden="true">id_fabricante</th>
-                                                <th>Fabricante</th>
-                                                <th>Estado</th>
-                                                <th>Stock</th>
-                                                <th>Precio</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <c:forEach items="${lista}" var="ver">
-                                                <tr>
-                                                    <td hidden="true">${ver.id_producto}</td>
-                                                    <td>${ver.codigo}</td>
-                                                    <td>${ver.imagen}</td>
-                                                    <td>${ver.modelo}</td>
-                                                    <td>${ver.nombre}</td>
-                                                    <td hidden="true">${ver.id_fabricante.id_fabricante}</td>
-                                                    <td>${ver.id_fabricante.nombre_fabricante}</td>
-                                                    <td>${ver.estado}</td>
-                                                    <td>${ver.stock}</td>
-                                                    <td>$ ${ver.precio_unitario}</td>
-                                                </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Nombre Cliente</th>
-                                                <th>Correo</th>
-                                                <th>Teléfono</th>
-                                                <th>Empresa</th>
-                                                <th>Página Web</th>
-                                                <th>Teléfono Empresa</th>
-                                                <th>NIT Empresa</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
+                        <div class="col-md-3">
+
+                            <!-- Profile Image -->
+                            <div class="box box-primary">
+                                <div class="box-body box-profile">
+                                    <div id="load_img">
+                                        <img class=" img-responsive" src="dist/img/productos/product.png" alt="Bussines profile picture">
+
+                                    </div>
+
+                                    <h3 class="profile-username text-center"></h3>
+
+                                    <p class="text-muted text-center mail-text"></p>
+
+
+
+
                                 </div>
                                 <!-- /.box-body -->
                             </div>
                             <!-- /.box -->
+
+
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-9">
+                            <form name="update_register" class="form-horizontal" method="post" action="productos?action=nuevoProducto" enctype="multipart/form-data">
+
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#details" data-toggle="tab" aria-expanded="false">Detalles del producto</a></li>
+
+
+                                    </ul>
+                                    <div class="tab-content">
+
+                                        <div class="tab-pane active" id="details">
+
+                                            <div class="form-group ">
+                                                <label class="col-sm-2 control-label">Código</label>
+
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" name="codigo_producto" required>
+
+                                                </div>
+                                                <label class="col-sm-2 control-label">Modelo</label>
+
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" name="modelo">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Nombre</label>
+
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" name="nombre_producto" required >
+                                                </div>
+                                                <label class="col-sm-2 control-label">Presentación</label>
+
+                                                <div class="col-sm-4">
+                                                    <input type="text" class="form-control" id="presentation" name="presentacion" maxlength="100" >
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Descripción</label>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control" name="descripcion" ></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="manufacturer_id" class="col-sm-2 control-label">Fabricante</label>
+
+                                                <div class="col-sm-4">
+                                                    <select class="form-control" name="fabricante" required>
+                                                        <option>Seleccione el fabricante</option>
+                                                        <c:forEach items="${listaFabricante}" var="ver">
+                                                            <option value="${ver.id_fabricante}">${ver.nombre_fabricante}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+
+                                                <label class="col-sm-2 control-label">Estado</label>
+
+                                                <div class="col-sm-4">
+                                                    <select class="form-control" name="estado" id="status">
+                                                        <option value="">Seleccione el estado</option>
+                                                        <option value="1">Activo</option>
+                                                        <option value="0">Inactivo</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Costo</label>
+
+                                                <div class="col-sm-4">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-usd"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="precio" required pattern="\d+(\.\d{2})?" title="precio con 2 decimales" onkeyup="precio_venta();">
+                                                    </div>
+                                                </div>
+                                                <label class="col-sm-2 control-label">Ganancia</label>
+
+                                                <div class="col-sm-4">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-usd"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="ganancia" required pattern="\d+(\.\d{2})?"  title="precio con 2 decimales" onkeyup="precio_venta();" >
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Precio de venta</label>
+
+                                                <div class="col-sm-4">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-usd"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="precio_venta" required pattern="\d+(\.\d{2})?" title="precio con 2 decimales">
+                                                    </div>
+                                                </div>
+
+                                                <label class="col-sm-2 control-label">Stock inicial</label>
+
+                                                <div class="col-sm-4">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-th-large" aria-hidden="true"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="stock" required pattern="\d{1,11}"  maxlength="11" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="image" class="col-sm-2 control-label">Imagen</label>
+
+                                                <div class="col-sm-6">
+                                                    <input type="file"  class='form-control' name="im" id="imagefile">
+                                                    <input class="form-control" name="imagen"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-2 col-sm-6">
+                                                    <button type="submit" class="btn btn-primary actualizar_datos">Guardar datos</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.tab-pane -->
+
+                                    </div>
+                                    <!-- /.tab-content -->
+                                </div>
+                                <!-- /.nav-tabs-custom -->
+                            </form>
                         </div>
                         <!-- /.col -->
                     </div>
-                    <!-- /.row -->
-                </section>
-                <!-- /.content -->
-            </div>
-            <!-- /.content-wrapper -->
+
+                </section><!-- /.content -->
+            </div><!-- /.content-wrapper -->
             <footer class="main-footer">
                 <div class="pull-right hidden-xs">
                     <b>Version</b> 2.4.12
@@ -499,17 +596,17 @@
         <script src="dist/js/demo.js"></script>
         <!-- page script -->
         <script>
-            $(function () {
-                $('#example1').DataTable()
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
-            })
+                                                            $(function () {
+                                                                $('#example1').DataTable()
+                                                                $('#example2').DataTable({
+                                                                    'paging': true,
+                                                                    'lengthChange': false,
+                                                                    'searching': false,
+                                                                    'ordering': true,
+                                                                    'info': true,
+                                                                    'autoWidth': false
+                                                                })
+                                                            })
         </script>
     </body>
 </html>
