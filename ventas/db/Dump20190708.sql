@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `ventas` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+CREATE DATABASE  IF NOT EXISTS `ventas` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `ventas`;
--- MySQL dump 10.13  Distrib 8.0.11, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
 -- Host: localhost    Database: ventas
 -- ------------------------------------------------------
--- Server version	8.0.11
+-- Server version	8.0.16
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -68,13 +68,13 @@ CREATE TABLE `contactos` (
   `apellido` varchar(150) NOT NULL,
   `email` varchar(150) NOT NULL,
   `telefono` varchar(9) NOT NULL,
-  `fecha_ingreso` date NOT NULL,
+  `fecha_ingreso` date DEFAULT NULL,
   PRIMARY KEY (`id_contacto`),
   KEY `empresa_contacto` (`id_empresa`),
   KEY `tipo_contacto` (`id_tipo_contacto`),
   CONSTRAINT `empresa_contacto` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id_empresa`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tipo_contacto` FOREIGN KEY (`id_tipo_contacto`) REFERENCES `tipo_contacto` (`id_tipo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,7 +83,7 @@ CREATE TABLE `contactos` (
 
 LOCK TABLES `contactos` WRITE;
 /*!40000 ALTER TABLE `contactos` DISABLE KEYS */;
-INSERT INTO `contactos` VALUES (1,2,1,'Hola','Hola','Hola@hola.com','7777-2525','2019-07-08');
+INSERT INTO `contactos` VALUES (1,1,3,'11','11','11','11','2019-01-01'),(17,2,34,'Azul','Azul','Azul','Azul','2019-07-06'),(21,2,38,'asd','ddd','dd@com','ddd','2019-07-06'),(22,2,40,'Hola','QueHace','correoh@gmail.com','5894-0001','2019-07-07'),(23,1,41,'sad','sad','sad@f.vom','ad','2019-07-07'),(25,1,43,'y','y','y@h.c','sda','2019-07-07'),(26,2,44,'t','t','t@t.com','asa','2019-07-07'),(27,1,45,'1','1','o@h.com','as','2019-07-07'),(28,2,46,'6','6','6@sas.co','sd','2019-07-07'),(29,1,47,'nn','nn','n@f.com','sad','2019-07-07'),(30,2,48,'dsa','dsad','sad@k.com','dsad','2019-07-07');
 /*!40000 ALTER TABLE `contactos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +159,7 @@ CREATE TABLE `empresa` (
   `id_pais` int(11) NOT NULL,
   `nombre_empresa` varchar(200) NOT NULL,
   `nit_empresa` varchar(17) NOT NULL,
-  `pagina_web` varchar(255) NOT NULL,
+  `pagina_web` varchar(255) DEFAULT NULL,
   `telefono_empresa` varchar(9) NOT NULL,
   `calle` varchar(200) NOT NULL,
   `ciudad` varchar(200) NOT NULL,
@@ -168,7 +168,7 @@ CREATE TABLE `empresa` (
   PRIMARY KEY (`id_empresa`),
   KEY `pais_empresa` (`id_pais`),
   CONSTRAINT `pais_empresa` FOREIGN KEY (`id_pais`) REFERENCES `pais` (`id_pais`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +177,7 @@ CREATE TABLE `empresa` (
 
 LOCK TABLES `empresa` WRITE;
 /*!40000 ALTER TABLE `empresa` DISABLE KEYS */;
-INSERT INTO `empresa` VALUES (1,1,'Hola','Hola','Hola.com','Hola','as','as','as','sa');
+INSERT INTO `empresa` VALUES (1,1,'DDD','SSSdd','sadsad','1111','1111','111','11','11'),(2,1,'111','11','11','11','11','11','11','11'),(3,1,'1','1','1','1','1','1','1','1'),(4,1,'Huawei','851dsa51','www.huawei.com','1245-9654','jj','jj','jj','j'),(5,1,'Nose','444','44','44','44','44','44','4'),(6,1,'jhghv','hvhgv','vhvhh','hvh','vh','vhv','h','vh'),(7,1,'a','a','a','a','a','a','a','a'),(8,1,'a','a','a','a','a','a','a','a'),(9,1,'dasd','sadsa','dsa','sadsa','sadsda','dsadsa','dsad','dsad'),(10,2,'HOLA','NIT','PAGINA','88888','Calle','Ciudad','DS','70005'),(11,2,'HOLA','NIT','PAGINA','88888','Calle','Ciudad','DS','70005'),(12,1,'sadad','sad','sad','sad','dsa','dsa','sad','dsa'),(13,1,'sadad','aaa','aaa','aaaa','aaaa','aaa','aaaa','aaaa'),(14,1,'sadad','aaa','aaa','aaaa','aaaa','aaa','aaaa','aaaa'),(15,1,'sadad','aaa','aaa','aaaa','aaaa','aaa','aaaa','aaaa'),(16,2,'2','2','2','2','2','2','2','2'),(17,2,'2','2','2','2','2','2','2','2'),(18,2,'2','2','2','2','2','2','2','2'),(19,2,'2','2','2','2','2','2','2','2'),(20,2,'2','asdddddddddddd','2','2','2','2','2','2'),(21,2,'asdadsd','asdddddddddddd','2','2','2','2','2','2'),(22,1,'1','1','1','1','1','1','1','1'),(23,1,'tyty','tyt','yty','tyt','yty','yty','tyt','1'),(24,2,'gg','gg','g','g','g','g','g','a'),(25,2,'gg','gg','g','g','g','g','g','a'),(26,2,'gg','gg','g','g','g','g','g','a'),(27,2,'gg','gg','g','g','g','g','g','a'),(28,2,'gg','gg','g','g','g','g','g','a'),(29,1,'45454','454','5445','545','87','dasd','sda','1'),(30,2,'uuu','uuu','uuu','uu','uuu','uu','uu','a'),(31,1,'HOLAQUEHACE','9898984151','www.hola.com','8888-0000','Calle','Ciudad 1 ','Narnia','503'),(32,1,'Hola','Hola','Hola','Hola','Hola','Hol','Hola','sa'),(33,1,'Manzana2','Manzana2','Manzana2','Manzana2','Manzana2','Manzana2','Manzana2','1'),(34,1,'Azul','Azul','Azul','Azul','Azul','Azul','Azul','1'),(35,1,'u','u','u','u','u','u','u','u'),(36,1,'sda','sa','sad','sad','dsa','sad','sad','as'),(37,1,'sda','sa','sad','sad','dsa','sad','sad','as'),(38,1,'Raul INC','45f5sd4f5ds','www.www.ww','7741-5114','sad','sad','sad','dsad'),(39,1,'Hola Inc','AS454-ADS54-5ADS','www.hola.com','2458-8540','Calle','Hola','Hola','654'),(40,2,'Huawei','1515as','www.huawei.com','7777-0000','sad','sad','sad','sda'),(41,1,'sad','sad','sad','dasd','ad','dsa','dad','das'),(42,1,'33','33','33','3','sd','sd','sd','sd'),(43,1,'y','y','y','y','sa','as','sa','dsa'),(44,1,'tt','tt','tt','t','sa','t','t','t'),(45,1,'1','1','1','1','s','a','sa','sa'),(46,1,'6','6','6','6','dsfd','sfsd','fdsf','sfs'),(47,1,'nn','nn','nn','nn','dsd','ds','sd','ds'),(48,1,'asd','dsa','sdad','sad','sd','sd','sds','ds');
 /*!40000 ALTER TABLE `empresa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,7 +195,7 @@ CREATE TABLE `fabricante` (
   `estado` varchar(1) NOT NULL,
   `fecha_ingreso` date NOT NULL,
   PRIMARY KEY (`id_fabricante`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,6 +204,7 @@ CREATE TABLE `fabricante` (
 
 LOCK TABLES `fabricante` WRITE;
 /*!40000 ALTER TABLE `fabricante` DISABLE KEYS */;
+INSERT INTO `fabricante` VALUES (1,'Asus',11,'A','2019-07-07');
 /*!40000 ALTER TABLE `fabricante` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,20 +303,20 @@ DROP TABLE IF EXISTS `productos`;
 CREATE TABLE `productos` (
   `id_producto` int(11) NOT NULL AUTO_INCREMENT,
   `id_fabricante` int(11) NOT NULL,
-  `codigo` int(11) NOT NULL,
+  `codigo` varchar(20) NOT NULL,
   `imagen` varchar(255) NOT NULL,
   `modelo` varchar(100) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `estado` varchar(1) NOT NULL,
   `stock` int(11) NOT NULL,
   `precio_unitario` decimal(11,2) NOT NULL,
+  `precio_venta` decimal(11,2) NOT NULL,
+  `ganancia` decimal(11,2) NOT NULL,
   `presentacion` varchar(150) NOT NULL,
-  `ganancia` int(11) NOT NULL,
-  `codigo_barra` int(11) NOT NULL,
   PRIMARY KEY (`id_producto`),
   KEY `fabricante_producto` (`id_fabricante`),
   CONSTRAINT `fabricante_producto` FOREIGN KEY (`id_fabricante`) REFERENCES `fabricante` (`id_fabricante`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -324,6 +325,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
+INSERT INTO `productos` VALUES (1,1,'1','asus.jpg','MO515','GTX 1060 6 GB','A',50,275.00,0.00,26.00,'C/U'),(2,1,'0001','asus.jpg','MO515','GTX 1060 6 GB','A',50,275.00,0.00,26.00,'C/U'),(3,1,'002','imagekjhn.jpg','MODELO','RX 480','A',15,125.00,175.00,25.00,'C/U'),(4,1,'00003','SDASDAF','12as','GTX 1060 3 GB','A',15,250.00,275.00,25.00,'C/U'),(5,1,'0002435','ASDSADAS','SAD','SDA','',43,125.00,125.00,12.00,'DAS');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -363,9 +365,8 @@ CREATE TABLE `usuario` (
   `nombre` varchar(100) NOT NULL,
   `usuario` varchar(100) NOT NULL,
   `email` varchar(150) NOT NULL,
+  `psw` varchar(255) NOT NULL,
   `tipo_usu` varchar(1) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `grupo` varchar(100) NOT NULL,
   `fecha_ingreso` date NOT NULL,
   `estado` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`)
@@ -390,4 +391,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-08  9:25:35
+-- Dump completed on 2019-07-08 21:21:50
