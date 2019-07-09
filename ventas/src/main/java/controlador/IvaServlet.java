@@ -3,6 +3,7 @@ package controlador;
 import conexion.Conexion;
 import dao.IvaDao;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -72,12 +73,26 @@ public class IvaServlet extends HttpServlet {
  
     protected void consultarAll(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        List<IvaBean> lista = ivd.consultarAll();
+        request.setAttribute("lista", lista);
+        rd = request.getRequestDispatcher("/Iva.jsp");
+        rd.forward(request, response);
     }
     
      protected void eliminar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int id_iva = Integer.parseInt(request.getParameter("id_iva"));
+        boolean respuesta = ivd.eliminar(id_iva);
+        List<IvaBean> lista = ivd.consultarAll();
+        if (respuesta) {
+            msg = "Registro fue eliminado con exito";
+        } else {
+            msg = "Registro no fue eliminado";
+        }
+        request.setAttribute("msg", msg);
+        request.setAttribute("lista", lista);
+        rd = request.getRequestDispatcher("/Iva.jsp");
+        rd.forward(request, response);
     }
 
        protected void doGet(HttpServletRequest request, HttpServletResponse response)
