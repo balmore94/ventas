@@ -184,7 +184,7 @@ public class ContactosDao {
     
     }
     public boolean actualizarContactos(ContactosBean ct) {
-        String sql = "update contactos set id_tipo_contacto=?, id_empresa=?, nombre=?, apellido=?, email=?, telefono=? where id contacto=?";
+        String sql = "update contactos set id_tipo_contacto=?, id_empresa=?, nombre=?, apellido=?, email=?, telefono=? where id_contacto=?";
         TipoContactoBean tipo = ct.getId_tipo_contacto();
         EmpresaBean eb = ct.getId_empresa();
        

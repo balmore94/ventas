@@ -107,4 +107,15 @@ public class ProductosDao {
             return null;
         }
     }
+    public boolean eliminar(int id){
+        String sql = "delete from productos where id_producto=?";
+        try {
+            PreparedStatement ps = conn.conectar().prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            return false; 
+        }
+    }
 }

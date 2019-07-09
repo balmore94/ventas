@@ -225,7 +225,8 @@
                                         <div class="box-body">
                                             <div class="form-group">
                                                 <label>Tipo de Cliente</label>
-                                                id tipo = ${ver.id_tipo_contacto.id_tipo}
+                                                <input class="form-control" name="id_tipo" value="${ver.id_tipo_contacto.id_tipo}">
+                                               
                                                         </div>
                                                 <div class="form-group">
                                                     <label>Empresa: </label>
