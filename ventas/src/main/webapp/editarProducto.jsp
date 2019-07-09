@@ -234,137 +234,147 @@
                         <!-- /.col -->
                         <div class="col-md-9">
                             <c:forEach items="${listaId}" var="ver">
-                            <form class="form-horizontal" method="POST" action="productos?action=updateProducto">
+                                <form class="form-horizontal" method="POST" action="productos?action=updateProducto">
 
-                                <div class="nav-tabs-custom">
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#details" data-toggle="tab" aria-expanded="false">Detalles del producto</a></li>
+                                    <div class="nav-tabs-custom">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#details" data-toggle="tab" aria-expanded="false">Detalles del producto</a></li>
 
 
-                                    </ul>
-                                    <div class="tab-content">
+                                        </ul>
+                                        <div class="tab-content">
 
-                                        <div class="tab-pane active" id="details">
+                                            <div class="tab-pane active" id="details">
 
-                                            <div class="form-group ">
-                                                <label class="col-sm-2 control-label">Código</label>
+                                                <div class="form-group ">
+                                                    <label class="col-sm-2 control-label">Código</label>
 
-                                                <div class="col-sm-4">
-                                                    <input type="text" value="${ver.codigo}" class="form-control" name="codigo_producto">
+                                                    <div class="col-sm-4">
+                                                        <input type="text" value="${ver.codigo}" class="form-control" name="codigo_producto">
 
-                                                </div>
-                                                <label class="col-sm-2 control-label">Modelo </label>
-
-                                                <div class="col-sm-4">
-                                                    <input value="${ver.modelo}" class="form-control" name="modelo">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Nombre</label>
-
-                                                <div class="col-sm-4">
-                                                    <input type="text" value="${ver.nombre}" class="form-control" name="nombre_producto" required >
-                                                </div>
-                                                <label class="col-sm-2 control-label">Presentación</label>
-
-                                                <div class="col-sm-4">
-                                                    <input type="text" value="${ver.presentacion}" class="form-control" name="presentacion">
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Fabricante</label>
-
-                                                <div class="col-sm-4">
-                                                    <select class="form-control" name="fabricante">
-                                                        <option value="${ver.id_fabricante.id_fabricante}">${ver.id_fabricante.nombre_fabricante}</option>
-                                                        <c:forEach items="${listaFabricante}" var="ver">
-                                                            <option value="${ver.id_fabricante}">${ver.nombre_fabricante}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-
-                                                <label class="col-sm-2 control-label">Estado</label>
-
-                                                <div class="col-sm-4">
-                                                    <select class="form-control" name="estado">
-                                                        <option value="">Seleccione el estado</option>
-                                                        <option value="A">Activo</option>
-                                                        <option value="I">Inactivo</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Costo</label>
-
-                                                <div class="col-sm-4">
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-usd"></i>
-                                                        </div>
-                                                        <input class="form-control" value="${ver.precio_unitario}" name="precio">
                                                     </div>
-                                                </div>
-                                                <label class="col-sm-2 control-label">Ganancia</label>
+                                                    <label class="col-sm-2 control-label">Modelo </label>
 
-                                                <div class="col-sm-4">
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-usd"></i>
-                                                        </div>
-                                                        <input class="form-control" value="${ver.ganancia}" name="ganancia">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">Precio de venta</label>
-
-                                                <div class="col-sm-4">
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-usd"></i>
-                                                        </div>
-                                                        <input class="form-control" name="precio_venta">
+                                                    <div class="col-sm-4">
+                                                        <input value="${ver.modelo}" class="form-control" name="modelo">
                                                     </div>
                                                 </div>
 
-                                                <label class="col-sm-2 control-label">Stock inicial</label>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Nombre</label>
 
-                                                <div class="col-sm-4">
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-th-large" aria-hidden="true"></i>
-                                                        </div>
-                                                        <input type="text" class="form-control" name="stock">
+                                                    <div class="col-sm-4">
+                                                        <input type="text" value="${ver.nombre}" class="form-control" name="nombre_producto" required >
+                                                    </div>
+                                                    <label class="col-sm-2 control-label">Presentación</label>
+
+                                                    <div class="col-sm-4">
+                                                        <input type="text" value="${ver.presentacion}" class="form-control" name="presentacion">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!--<div class="form-group">
-                                                <label for="image" class="col-sm-2 control-label">Imagen</label>
 
-                                                <div class="col-sm-6">
-                                                    <input type="file"  class='form-control' name="im" id="imagefile">
-                                                    <input class="form-control" name="imagen"/>
-                                                </div>
-                                            </div>-->
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Fabricante</label>
 
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-2 col-sm-6">
-                                                    <button type="submit" class="btn btn-primary actualizar_datos">Guardar datos</button>
+                                                    <div class="col-sm-4">
+                                                        <select class="form-control" name="fabricante">
+                                                            <option value="${ver.id_fabricante.id_fabricante}">${ver.id_fabricante.nombre_fabricante}</option>
+                                                            <c:forEach items="${listaFabricante}" var="mostrar">
+                                                                <option value="${mostrar.id_fabricante}">${mostrar.nombre_fabricante}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
+
+                                                    <label class="col-sm-2 control-label">Estado</label>
+
+                                                    <div class="col-sm-4">
+
+                                                        <select class="form-control" name="estado">
+                                                            <option value="${ver.estado}"><c:choose>
+                                                                    <c:when test="${ver.estado=='A'}">
+                                                                        Activo 
+                                                                    <br />
+                                                                </c:when>    
+                                                                <c:otherwise>
+                                                                    Inactivo 
+                                                                    <br />
+                                                                </c:otherwise>
+                                                            </c:choose></option>
+                                                            <option value="A">Activo</option>
+                                                            <option value="I">Inactivo</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Costo</label>
+
+                                                    <div class="col-sm-4">
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-usd"></i>
+                                                            </div>
+                                                            <input class="form-control" value="${ver.precio_unitario}" name="precio">
+                                                        </div>
+                                                    </div>
+                                                    <label class="col-sm-2 control-label">Ganancia</label>
+
+                                                    <div class="col-sm-4">
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-usd"></i>
+                                                            </div>
+                                                            <input class="form-control" value="${ver.ganancia}" name="ganancia">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Precio de venta</label>
+
+                                                    <div class="col-sm-4">
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-usd"></i>
+                                                            </div>
+                                                            <input class="form-control" value="${ver.precio_venta}" name="precio_venta">
+                                                        </div>
+                                                    </div>
+
+                                                    <label class="col-sm-2 control-label">Stock inicial</label>
+
+                                                    <div class="col-sm-4">
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon">
+                                                                <i class="fa fa-th-large" aria-hidden="true"></i>
+                                                            </div>
+                                                            <input type="text" class="form-control" value="${ver.stock}" name="stock">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--<div class="form-group">
+                                                    <label for="image" class="col-sm-2 control-label">Imagen</label>
+    
+                                                    <div class="col-sm-6">
+                                                        <input type="file"  class='form-control' name="im" id="imagefile">
+                                                        <input class="form-control" name="imagen"/>
+                                                    </div>
+                                                </div>-->
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-2 col-sm-6">
+                                                        <button type="submit" class="btn btn-primary actualizar_datos">Guardar datos</button>
+                                                    </div>
+                                                </div>
+
                                             </div>
+                                            <!-- /.tab-pane -->
 
                                         </div>
-                                        <!-- /.tab-pane -->
-
+                                        <!-- /.tab-content -->
                                     </div>
-                                    <!-- /.tab-content -->
-                                </div>
-                                <!-- /.nav-tabs-custom -->
-                            </form>
+                                    <!-- /.nav-tabs-custom -->
+                                </form>
                             </c:forEach>
                         </div>
                         <!-- /.col -->
@@ -593,17 +603,17 @@
         <script src="dist/js/demo.js"></script>
         <!-- page script -->
         <script>
-                                                            $(function () {
-                                                                $('#example1').DataTable()
-                                                                $('#example2').DataTable({
-                                                                    'paging': true,
-                                                                    'lengthChange': false,
-                                                                    'searching': false,
-                                                                    'ordering': true,
-                                                                    'info': true,
-                                                                    'autoWidth': false
-                                                                })
-                                                            })
+            $(function () {
+                $('#example1').DataTable()
+                $('#example2').DataTable({
+                    'paging': true,
+                    'lengthChange': false,
+                    'searching': false,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': false
+                })
+            })
         </script>
     </body>
 </html>

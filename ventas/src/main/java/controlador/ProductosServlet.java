@@ -117,7 +117,9 @@ public class ProductosServlet extends HttpServlet {
     protected void showEditar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
+        
         List<ProductosBean>listaId = ptd.findById(id);
+
         FabricanteDao fad = new FabricanteDao(conn);
         List<FabricanteBean> listaFabricante = fad.allFabricante();
         request.setAttribute("listaId", listaId);
