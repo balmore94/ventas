@@ -192,10 +192,11 @@ public class ContactosServlet extends HttpServlet {
         List<TipoContactoBean> listaTipo = tp.findAllTipo();
         
   
-        List<ContactosBean> listaco = ctd.findById(idContacto) ;
-        ;
+        List<ContactosBean> lista = ctd.findById(idContacto) ;
+        
         request.setAttribute("listaTipo", listaTipo);
-        request.setAttribute("listaco", listaco);
+        request.setAttribute("lista", lista);
+        //System.out.println(lista);
         rd = request.getRequestDispatcher("actualizarContacto.jsp");
         rd.forward(request, response);
 

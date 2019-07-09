@@ -218,19 +218,15 @@
                                     </div>
                                     <!-- /.box-header -->
                                     <!-- form start -->
-
+                                    
+                                    <c:forEach items="${lista}" var="ver">
                                     <form role="form" action="contactos?action=editar" method="POST">
+                                        
                                         <div class="box-body">
                                             <div class="form-group">
                                                 <label>Tipo de Cliente</label>
-                                                <select class="form-control" name="id_tipo">
-
-                                                    <c:forEach items="${listaTipo}" var="ver"> 
-                                                        <option value="${ver.id_tipo}">${ver.tipo}</option>
-                                                    </c:forEach>
-                                                </select>
-                                                <c:forEach items="${listaco}" var="ver"> 
-                                                </div>
+                                                id tipo = ${ver.id_tipo_contacto.id_tipo}
+                                                        </div>
                                                 <div class="form-group">
                                                     <label>Empresa: </label>
                                                     <input class="form-control" name="id_empresa" value="${ver.id_empresa.id_empresa}">
@@ -253,14 +249,15 @@
                                                 </div>
                                                 <div class="form-group">
 
-                                                </c:forEach>
+                                               
                                             </div>
                                             <!-- /.box-body -->
 
                                             <div class="box-footer">
                                                 <button type="submit" class="btn btn-primary">Actualizar</button>
                                             </div>
-                                    </form>
+                                    </form> 
+                                    </c:forEach>
                                     ${msg}
                                 </div>
                                 <!-- /.box -->

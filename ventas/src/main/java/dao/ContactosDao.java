@@ -159,11 +159,11 @@ public class ContactosDao {
             ResultSet rs = ps.executeQuery();
             List<ContactosBean> lista = new LinkedList<>();
             ContactosBean ctb;
-            TipoContactoBean tp;
+            
             while (rs.next()) {
-                
+                TipoContactoBean tp;
                 EmpresaBean emb;
-                ctb = new ContactosBean(rs.getInt(id));
+                ctb = new ContactosBean(rs.getInt("id_contacto"));
                 tp = new TipoContactoBean(rs.getInt("id_tipo_contacto"));
                 emb = new EmpresaBean(rs.getInt("id_empresa"));
 
@@ -174,7 +174,7 @@ public class ContactosDao {
                 ctb.setApellido(rs.getString("apellido"));
                 ctb.setEmail(rs.getString("email"));
                 ctb.setTelefono(rs.getString("telefono"));
-
+                ctb.setFecha_ingreso(rs.getDate("fecha_ingreso"));
                 lista.add(ctb);
             }
             return lista;

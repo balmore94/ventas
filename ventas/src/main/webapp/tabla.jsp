@@ -18,30 +18,14 @@
             <thead>
                 <tr>
                     <th>id</th>
-                    <th>codigo</th>
-                    <th>imagen</th>
-                    <th>modelo</th>
-                    <th>nombre</th>
-                    <th>id_fabricante</th>
-                    <th>nombre fabricante</th>
-                    <th>estado</th>
-                    <th>stock</th>
-                    <th>precio</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${lista}" var="ver">
                 <tr>
-                    <td>${ver.id_producto}</td>
-                    <td>${ver.codigo}</td>
-                    <td>${ver.imagen}</td>
-                    <td>${ver.modelo}</td>
-                    <td>${ver.nombre}</td>
-                    <td>${ver.id_fabricante.id_fabricante}</td>
-                    <td>${ver.id_fabricante.nombre_fabricante}</td>
-                    <td>${ver.estado}</td>
-                    <td>${ver.stock}</td>
-                    <td>${ver.precio_unitario}</td>
+                    <td>${ver.id_contacto}</td>
+                   
                 </tr>
                 </c:forEach>
             </tbody>
