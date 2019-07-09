@@ -405,6 +405,7 @@
                                                                 <span class="glyphicon glyphicon-remove-circle"></span> Eliminar
                                                             </button>
                                                         </a>
+                                                    </td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>

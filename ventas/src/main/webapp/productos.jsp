@@ -220,7 +220,7 @@
                                     <a href="productos?action=registroProducto"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class='fa fa-plus'></i>Nuevo </button></a>
                                 </div>
                                 </div>
-                                ${msg}
+                                
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <table id="example1" class="table table-bordered table-striped">
@@ -251,18 +251,33 @@
                                                     <td>${ver.estado}</td>
                                                     <td>${ver.stock}</td>
                                                     <td>$ ${ver.precio_unitario}</td>
+                                                    <td>
+                                                        <a href="productos?action=showEditar&id=${ver.id_producto}">
+                                                            <button type="button" class="btn btn-default btn-sm">
+                                                                <span class="glyphicon glyphicon-edit"></span> Editar
+                                                            </button>
+                                                        </a>
+                                                        <a href="productos?action=eliminar&id=${ver.id_producto}">
+                                                            <button type="button" class="btn btn-default btn-sm">
+                                                                <span class="glyphicon glyphicon-remove-circle"></span> Eliminar
+                                                            </button>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
                                         <tfoot>
                                             <tr>
-                                                <th>Nombre Cliente</th>
-                                                <th>Correo</th>
-                                                <th>Teléfono</th>
-                                                <th>Empresa</th>
-                                                <th>Página Web</th>
-                                                <th>Teléfono Empresa</th>
-                                                <th>NIT Empresa</th>
+                                                <th hidden="true">id</th>
+                                                <th>Código</th>
+                                                <th>Imágen</th>
+                                                <th>Modelo</th>
+                                                <th>Procucto</th>
+                                                <th hidden="true">id_fabricante</th>
+                                                <th>Fabricante</th>
+                                                <th>Estado</th>
+                                                <th>Stock</th>
+                                                <th>Precio</th>
                                             </tr>
                                         </tfoot>
                                     </table>

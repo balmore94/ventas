@@ -53,7 +53,7 @@ public class ProductosDao {
     
     /*Metodo para insertar un nuevo producto a la base de datos*/
     public boolean insertarProducto(ProductosBean ptb){
-        String sql = "insert into productos values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        String sql = "insert into productos values (?,?,?,?,?,?,?,?,?,?,?,?)";
         FabricanteBean fab = ptb.getId_fabricante();
         try {
             PreparedStatement ps = conn.conectar().prepareStatement(sql);
@@ -68,12 +68,43 @@ public class ProductosDao {
             ps.setDouble(9, ptb.getPrecio_unitario());
             ps.setDouble(10, ptb.getPrecio_venta());
             ps.setDouble(11, ptb.getGanancia());
-            ps.setString(10, ptb.getPresentacion());         
-            ps.setString(12, ptb.getCodigo_barra());
+            ps.setString(12, ptb.getPresentacion());         
+            
             ps.executeUpdate();
             return true;
         } catch (Exception e) {
             return false; 
+        }
+    }
+    
+    public List<ProductosBean> findById(int id){
+        String sql = "SELECT productos.id_producto, productos.id_fabricante, fabricante.nombre_fabricante, productos.codigo, productos.imagen, productos.modelo, productos.nombre, productos.estado, productos.stock, productos.precio_unitario, productos.precio_venta, productos.ganancia, productos.presentacion FROM productos INNER JOIN fabricante ON productos.id_fabricante = fabricante.id_fabricante WHERE id_producto = ?";
+        try {
+            PreparedStatement ps = conn.conectar().prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            List<ProductosBean> listaId = new LinkedList<>();
+            ProductosBean ptb;
+            while(rs.next()){
+                FabricanteBean fab;
+                ptb = new ProductosBean(rs.getInt("id_producto"));
+                fab = new FabricanteBean(rs.getInt("id_fabricante"));
+                fab.setNombre_fabricante(rs.getString("nombre_fabricante"));
+                ptb.setId_fabricante(fab);
+                ptb.setCodigo(rs.getString("codigo"));
+                ptb.setModelo(rs.getString("modelo"));
+                ptb.setNombre(rs.getString("nombre"));
+                ptb.setEstado(rs.getString("estado"));
+                ptb.setStock(rs.getInt("stock"));
+                ptb.setPrecio_unitario(rs.getDouble("precio_unitario"));
+                ptb.setPrecio_venta(rs.getDouble("precio_venta"));
+                ptb.setGanancia(rs.getDouble("ganancia"));
+                ptb.setPresentacion(rs.getString("presentacion"));
+                listaId.add(ptb);
+            }
+            return listaId;
+        } catch (Exception e) {
+            return null;
         }
     }
 }

@@ -39,6 +39,9 @@ public class ProductosServlet extends HttpServlet {
             case "nuevoProducto":
                 nuevoProducto(request, response);
                 break;
+            case "showEditar":
+                showEditar(request, response);
+                break;
         }
     }
 
@@ -68,17 +71,19 @@ public class ProductosServlet extends HttpServlet {
         String modelo = request.getParameter("modelo");
         String nombre_producto = request.getParameter("nombre_producto");
         String presentacion = request.getParameter("presentacion");
-        String desc = request.getParameter("descripcion");
+        //String desc = request.getParameter("descripcion");
         String estado = request.getParameter("estado");
-        double precio_unitario = Double.parseDouble("precio");
-        double ganancia = Double.parseDouble("ganancia");
-        double precio_venta = Double.parseDouble("precio_venta");
+        double precio_unitario = Double.valueOf(request.getParameter("precio"));
+        
+        double ganancia = Double.valueOf(request.getParameter("ganancia"));
+        double precio_venta = Double.valueOf(request.getParameter("precio_venta"));
         int stock = Integer.parseInt(request.getParameter("stock"));
         String imagen = request.getParameter("imagen");
 
         ProductosBean ptb = new ProductosBean(0);
 
         FabricanteBean fab = new FabricanteBean(id_fabricante);
+        
         ptb.setId_fabricante(fab);
         ptb.setCodigo(codigo_producto);
         ptb.setImagen(imagen);
@@ -101,11 +106,26 @@ public class ProductosServlet extends HttpServlet {
                     + "  Algo salio mal, el registro no se pudo guardar...\n"
                     + "</div>";
         }
+        
+        List<ProductosBean> lista = ptd.allProductos();
+        request.setAttribute("lista", lista);
         request.setAttribute("msg", msg);
         rd = request.getRequestDispatcher("productos.jsp");
         rd.forward(request, response);
     }
-
+    
+    protected void showEditar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        List<ProductosBean>listaId = ptd.findById(id);
+        FabricanteDao fad = new FabricanteDao(conn);
+        List<FabricanteBean> listaFabricante = fad.allFabricante();
+        request.setAttribute("listaId", listaId);
+        request.setAttribute("listaFabricante", listaFabricante);
+        rd = request.getRequestDispatcher("editarProducto.jsp");
+        rd.forward(request, response);
+    }
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -233,7 +233,8 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-md-9">
-                            <form class="form-horizontal" method="POST" action="productos?action=nuevoProducto">
+                            <c:forEach items="${listaId}" var="ver">
+                            <form class="form-horizontal" method="POST" action="productos?action=updateProducto">
 
                                 <div class="nav-tabs-custom">
                                     <ul class="nav nav-tabs">
@@ -249,13 +250,13 @@
                                                 <label class="col-sm-2 control-label">Código</label>
 
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" name="codigo_producto">
+                                                    <input type="text" value="${ver.codigo}" class="form-control" name="codigo_producto">
 
                                                 </div>
-                                                <label class="col-sm-2 control-label">Modelo</label>
+                                                <label class="col-sm-2 control-label">Modelo </label>
 
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" name="modelo">
+                                                    <input value="${ver.modelo}" class="form-control" name="modelo">
                                                 </div>
                                             </div>
 
@@ -263,26 +264,21 @@
                                                 <label class="col-sm-2 control-label">Nombre</label>
 
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" name="nombre_producto" required >
+                                                    <input type="text" value="${ver.nombre}" class="form-control" name="nombre_producto" required >
                                                 </div>
                                                 <label class="col-sm-2 control-label">Presentación</label>
 
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" name="presentacion">
+                                                    <input type="text" value="${ver.presentacion}" class="form-control" name="presentacion">
                                                 </div>
                                             </div>
+                                            
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label">Descripción</label>
-                                                <div class="col-sm-10">
-                                                    <textarea class="form-control" name="descripcion" ></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="manufacturer_id" class="col-sm-2 control-label">Fabricante</label>
+                                                <label class="col-sm-2 control-label">Fabricante</label>
 
                                                 <div class="col-sm-4">
                                                     <select class="form-control" name="fabricante">
-                                                        <option>Seleccione el fabricante</option>
+                                                        <option value="${ver.id_fabricante.id_fabricante}">${ver.id_fabricante.nombre_fabricante}</option>
                                                         <c:forEach items="${listaFabricante}" var="ver">
                                                             <option value="${ver.id_fabricante}">${ver.nombre_fabricante}</option>
                                                         </c:forEach>
@@ -308,7 +304,7 @@
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-usd"></i>
                                                         </div>
-                                                        <input class="form-control" name="precio">
+                                                        <input class="form-control" value="${ver.precio_unitario}" name="precio">
                                                     </div>
                                                 </div>
                                                 <label class="col-sm-2 control-label">Ganancia</label>
@@ -318,7 +314,7 @@
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-usd"></i>
                                                         </div>
-                                                        <input class="form-control" name="ganancia">
+                                                        <input class="form-control" value="${ver.ganancia}" name="ganancia">
                                                     </div>
                                                 </div>
                                             </div>
@@ -369,6 +365,7 @@
                                 </div>
                                 <!-- /.nav-tabs-custom -->
                             </form>
+                            </c:forEach>
                         </div>
                         <!-- /.col -->
                     </div>
