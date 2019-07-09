@@ -123,7 +123,7 @@
               </a>
             </li>
                   <li class="">
-              <a href="manufacturers.php">
+              <a href="fabricante?action=allFabricantes">
                 <i class="glyphicon glyphicon-tag"></i> <span>Fabricantes</span>
               </a>
             </li>

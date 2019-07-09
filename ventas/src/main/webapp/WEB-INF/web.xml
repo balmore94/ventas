@@ -12,6 +12,10 @@
         <servlet-name>IvaServlet</servlet-name>
         <servlet-class>controlador.IvaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FabricanteServlet</servlet-name>
+        <servlet-class>controlador.FabricanteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ContactosServlet</servlet-name>
         <url-pattern>/contactos</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>IvaServlet</servlet-name>
         <url-pattern>/iva</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FabricanteServlet</servlet-name>
+        <url-pattern>/fabricante</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
