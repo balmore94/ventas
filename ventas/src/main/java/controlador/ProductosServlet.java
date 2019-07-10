@@ -41,10 +41,9 @@ public class ProductosServlet extends HttpServlet {
                 break;
             case "showEditar":
                 showEditar(request, response);
-
+                break;
             case "eliminar":
                 eliminar(request, response);
-
                 break;
         }
     }

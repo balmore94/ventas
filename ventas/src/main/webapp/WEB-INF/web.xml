@@ -16,6 +16,18 @@
         <servlet-name>FabricanteServlet</servlet-name>
         <servlet-class>controlador.FabricanteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ComprasServlet</servlet-name>
+        <servlet-class>controlador.ComprasServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <servlet-class>controlador.IndexServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GuardarCompraServlet</servlet-name>
+        <servlet-class>controlador.GuardarCompraServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ContactosServlet</servlet-name>
         <url-pattern>/contactos</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>FabricanteServlet</servlet-name>
         <url-pattern>/fabricante</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComprasServlet</servlet-name>
+        <url-pattern>/compras</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuardarCompraServlet</servlet-name>
+        <url-pattern>/guardarcompra</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

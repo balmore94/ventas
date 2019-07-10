@@ -15,6 +15,7 @@ public class CompraBean {
 
     public CompraBean(int id_compra) {
         this.id_compra = id_compra;
+        fecha_compra = new Date();
     }
 
     public int getId_compra() {

@@ -93,7 +93,7 @@
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar">
+             <aside class="main-sidebar">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
 
@@ -101,8 +101,8 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="header">MENÚ</li>
-                        <li class=" treeview">
-                            <a href="index.php">
+                        <li class="">
+                            <a href="index.jsp">
                                 <i class="fa fa-home"></i> <span>Inicio</span> 
                             </a>
                         </li>
@@ -114,8 +114,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class=""><a href="new_purchase.php"><i class="glyphicon glyphicon-shopping-cart"></i> Nueva compra</a></li>
-                                <li class=""><a href="purchase_list.php"><i class="glyphicon glyphicon-th-list"></i> Historial de compras</a></li>
+                                <li class=""><a href="compras?action=nuevaCompra&tipo=1"><i class="glyphicon glyphicon-shopping-cart"></i> Nueva compra</a></li>
+                                <li class=""><a href="compras?action=listaCompras"><i class="glyphicon glyphicon-th-list"></i> Historial de compras</a></li>
                             </ul>
                         </li>
                         <li class="">
@@ -124,7 +124,7 @@
                             </a>
                         </li>
                         <li class="">
-                            <a href="manufacturers.php">
+                            <a href="fabricante?action=allFabricantes">
                                 <i class="glyphicon glyphicon-tag"></i> <span>Fabricantes</span>
                             </a>
                         </li>
@@ -136,7 +136,7 @@
                             </a>
                             <ul class="treeview-menu">
 
-                                <li class=""><a href="contactos?action=clientes"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
+                                <li class=""><a href="contactos?action=allClientes"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
 
                                 <li class=""><a href="contactos?action=allProveedores"><i class="glyphicon glyphicon-briefcase"></i> Proveedores</a></li>
 
@@ -148,49 +148,11 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class=""><a href="new_sale.php"><i class="fa fa-cart-plus"></i> Nueva venta</a></li>
-                                <li class=""><a href="manage_invoice.php"><i class="glyphicon glyphicon-list-alt"></i> Administrar facturas</a></li>
+                                <li class=""><a href="#"><i class="fa fa-cart-plus"></i> Nueva venta</a></li>
+                                <li class=""><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Administrar facturas</a></li>
                             </ul>
                         </li>
-                        <li class=" treeview">
-                            <a href="#">
-                                <i class="glyphicon glyphicon-signal"></i> <span>Reportes</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class=""><a href="sales_report.php"><i class="fa fa-bar-chart"></i> Reporte de ventas</a></li>
-                                <li class=""><a href="purchases_report.php"><i class="fa fa-line-chart"></i> Reporte de compras</a></li>
-                                <li class=""><a href="inventory_report.php"><i class="fa fa-bar-chart"></i> Reporte de inventario</a></li>
-                            </ul>
-                        </li>
-                        <li class=" treeview">
-                            <a href="#">
-                                <i class="fa fa-wrench"></i> <span>Configuración</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class=""><a href="business_profile.php"><i class="glyphicon glyphicon-briefcase"></i> Perfil de la empresa</a></li>
-                                <li class=""><a href="currencies.php"><i class="fa fa-usd"></i> Monedas</a></li>
-                                <li class=""><a href="taxes.php"><i class="fa fa-align-justify"></i> Impuestos</a></li>
-                                <li class=""><a href="templates.php"><i class="fa fa-file-pdf-o"></i> Plantillas</a></li>
-                            </ul>
-                        </li>
-                        <li class=" treeview">
-                            <a href="#">
-                                <i class="fa fa-lock"></i> <span>Administrar accesos</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-
-                                <li class=""><a href="group_list.php"><i class="glyphicon glyphicon-briefcase"></i> Grupos de usuarios</a></li>
-
-                                <li class=""><a href="user_list.php"><i class="fa fa-users"></i> Usuarios</a></li>
-
-                            </ul>
-                        </li>
-
-
-                    </ul>
+        
                 </section>
                 <!-- /.sidebar -->
             </aside>
@@ -244,8 +206,7 @@
                                                             <div class="nav-tabs-custom">
                                                                 <ul class="nav nav-tabs">
                                                                     <li class="active"><a href="#activity" data-toggle="tab">Empresa</a></li>
-                                                                    <li><a href="#timeline" data-toggle="tab">Contacto</a></li>
-                                                                    <li><a href="#settings" data-toggle="tab">Dirección</a></li>
+                                                                    
                                                                 </ul>
                                                                 <div class="tab-content">
                                                                     <div class="active tab-pane" id="activity">
@@ -275,76 +236,9 @@
                                                                         </div>
 
                                                                     </div><!-- /.tab-pane -->
-                                                                    <div class="tab-pane" id="timeline">
-                                                                        <input name="id_tipo" hidden="true" value="${tipo_con}" />
-                                                                        <div class="form-group">
-                                                                            <label for="first_name" class="col-sm-3 control-label">Nombres</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="nombre_cliente" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="last_name" class="col-sm-3 control-label">Apellidos</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="apellido_cliente" required>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="email" class="col-sm-3 control-label">Correo</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="email" class="form-control"name="correo">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="phone" class="col-sm-3 control-label">Teléfono</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="telefono_cliente" required>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div><!-- /.tab-pane -->
+                                                                    
 
-                                                                    <div class="tab-pane" id="settings">
-
-                                                                        <div class="form-group">
-                                                                            <label for="address1" class="col-sm-3 control-label">Calle</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="calle">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="city" class="col-sm-3 control-label">Ciudad</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="ciudad">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="state" class="col-sm-3 control-label">Región/Provincia</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" name="region">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="postal_code" class="col-sm-3 control-label">Código Postal</label>
-                                                                            <div class="col-sm-9">
-                                                                                <input type="text" class="form-control" id="postal_code" name="cp">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="address1" class="col-sm-3 control-label">País</label>
-                                                                            <div class="col-sm-9">
-                                                                                <select class='form-control' name="pais">
-                                                                                    <option>Seleccione un país</option>
-                                                                                    <c:forEach items="${listaPais}" var="ver">
-                                                                                        <option value="${ver.id_pais}">${ver.nombre}</option>
-                                                                                    </c:forEach>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-
-
-
-
-                                                                    </div><!-- /.tab-pane -->
+                                                                    
                                                                 </div><!-- /.tab-content -->
                                                             </div><!-- /.nav-tabs-custom -->
 
@@ -378,6 +272,7 @@
                                                 <th>N° de productos</th>
                                                 <th>Estado</th>
                                                 <th>Agregado</th>
+                                                <th></th>
                                                 <th></th>
                                             </tr>
                                         </thead>

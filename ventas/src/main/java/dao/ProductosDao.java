@@ -93,6 +93,7 @@ public class ProductosDao {
                 ptb.setId_fabricante(fab);
                 ptb.setCodigo(rs.getString("codigo"));
                 ptb.setDescripcion(rs.getString("descripcion"));
+                
                 ptb.setModelo(rs.getString("modelo"));
                 ptb.setNombre(rs.getString("nombre"));
                 ptb.setEstado(rs.getString("estado"));
@@ -101,6 +102,7 @@ public class ProductosDao {
                 ptb.setPrecio_venta(rs.getDouble("precio_venta"));
                 ptb.setGanancia(rs.getDouble("ganancia"));
                 ptb.setPresentacion(rs.getString("presentacion"));
+                //System.out.println(rs.getString(ptb.getDescripcion()));
                 listaId.add(ptb);
             }
             return listaId;

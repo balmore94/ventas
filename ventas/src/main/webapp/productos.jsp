@@ -93,7 +93,7 @@
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar">
+             <aside class="main-sidebar">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
 
@@ -101,8 +101,8 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="header">MENÚ</li>
-                        <li class=" treeview">
-                            <a href="index.php">
+                        <li class="">
+                            <a href="index.jsp">
                                 <i class="fa fa-home"></i> <span>Inicio</span> 
                             </a>
                         </li>
@@ -114,8 +114,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class=""><a href="new_purchase.php"><i class="glyphicon glyphicon-shopping-cart"></i> Nueva compra</a></li>
-                                <li class=""><a href="purchase_list.php"><i class="glyphicon glyphicon-th-list"></i> Historial de compras</a></li>
+                                <li class=""><a href="compras?action=nuevaCompra&tipo=1"><i class="glyphicon glyphicon-shopping-cart"></i> Nueva compra</a></li>
+                                <li class=""><a href="compras?action=listaCompras"><i class="glyphicon glyphicon-th-list"></i> Historial de compras</a></li>
                             </ul>
                         </li>
                         <li class="">
@@ -124,7 +124,7 @@
                             </a>
                         </li>
                         <li class="">
-                            <a href="manufacturers.php">
+                            <a href="fabricante?action=allFabricantes">
                                 <i class="glyphicon glyphicon-tag"></i> <span>Fabricantes</span>
                             </a>
                         </li>
@@ -136,7 +136,7 @@
                             </a>
                             <ul class="treeview-menu">
 
-                                <li class=""><a href="contactos?action=clientes"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
+                                <li class=""><a href="contactos?action=allClientes"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
 
                                 <li class=""><a href="contactos?action=allProveedores"><i class="glyphicon glyphicon-briefcase"></i> Proveedores</a></li>
 
@@ -148,49 +148,11 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class=""><a href="new_sale.php"><i class="fa fa-cart-plus"></i> Nueva venta</a></li>
-                                <li class=""><a href="manage_invoice.php"><i class="glyphicon glyphicon-list-alt"></i> Administrar facturas</a></li>
+                                <li class=""><a href="#"><i class="fa fa-cart-plus"></i> Nueva venta</a></li>
+                                <li class=""><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Administrar facturas</a></li>
                             </ul>
                         </li>
-                        <li class=" treeview">
-                            <a href="#">
-                                <i class="glyphicon glyphicon-signal"></i> <span>Reportes</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class=""><a href="sales_report.php"><i class="fa fa-bar-chart"></i> Reporte de ventas</a></li>
-                                <li class=""><a href="purchases_report.php"><i class="fa fa-line-chart"></i> Reporte de compras</a></li>
-                                <li class=""><a href="inventory_report.php"><i class="fa fa-bar-chart"></i> Reporte de inventario</a></li>
-                            </ul>
-                        </li>
-                        <li class=" treeview">
-                            <a href="#">
-                                <i class="fa fa-wrench"></i> <span>Configuración</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class=""><a href="business_profile.php"><i class="glyphicon glyphicon-briefcase"></i> Perfil de la empresa</a></li>
-                                <li class=""><a href="currencies.php"><i class="fa fa-usd"></i> Monedas</a></li>
-                                <li class=""><a href="taxes.php"><i class="fa fa-align-justify"></i> Impuestos</a></li>
-                                <li class=""><a href="templates.php"><i class="fa fa-file-pdf-o"></i> Plantillas</a></li>
-                            </ul>
-                        </li>
-                        <li class=" treeview">
-                            <a href="#">
-                                <i class="fa fa-lock"></i> <span>Administrar accesos</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-
-                                <li class=""><a href="group_list.php"><i class="glyphicon glyphicon-briefcase"></i> Grupos de usuarios</a></li>
-
-                                <li class=""><a href="user_list.php"><i class="fa fa-users"></i> Usuarios</a></li>
-
-                            </ul>
-                        </li>
-
-
-                    </ul>
+        
                 </section>
                 <!-- /.sidebar -->
             </aside>
@@ -212,30 +174,30 @@
                         <div class="col-xs-12">
 
                             <div class="box">
-                                
+
                                 <div class="box-header">
                                     <h3 class="box-title">Listado de productos detallado</h3>
                                     <div class="btn-group pull-right">
-                                    
-                                    <a href="productos?action=registroProducto"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class='fa fa-plus'></i>Nuevo </button></a>
+
+                                        <a href="productos?action=registroProducto"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class='fa fa-plus'></i>Nuevo </button></a>
+                                    </div>
                                 </div>
-                                </div>
-                                
+
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th hidden="true">id</th>
-                                                <th>Código</th>
-                                                <th hidden="true">Imágen</th>
+                                                
+                                                <th>Código</th>                                             
                                                 <th>Modelo</th>
                                                 <th>Procucto</th>
-                                                <th hidden="true">id_fabricante</th>
                                                 <th>Fabricante</th>
                                                 <th>Estado</th>
                                                 <th>Stock</th>
                                                 <th>Precio</th>
+                                                <th></th>
+                                                <th></th><th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -243,290 +205,300 @@
                                                 <tr>
                                                     <td hidden="true">${ver.id_producto}</td>
                                                     <td>${ver.codigo}</td>
-                                                    
+
                                                     <td>${ver.modelo}</td>
                                                     <td>${ver.nombre}</td>
-                                                    <td hidden="true">${ver.id_fabricante.id_fabricante}</td>
+                                                    
                                                     <td>${ver.id_fabricante.nombre_fabricante}</td>
-                                                    <td>${ver.estado}</td>
-                                                    <td>${ver.stock}</td>
-                                                    <td>$ ${ver.precio_unitario}</td>
                                                     <td>
-                                                        <a href="productos?action=showEditar&id=${ver.id_producto}">
-                                                            <button type="button" class="btn btn-default btn-sm">
-                                                                <span class="glyphicon glyphicon-edit"></span> Editar
-                                                            </button>
-                                                        </a>                                                       
-                                                    </td>
-                                                    <td>
-                                                        <a href="productos?action=eliminar&id=${ver.id_producto}">
-                                                            <button type="button" class="btn btn-default btn-sm">
-                                                                <span class="glyphicon glyphicon-remove-circle"></span> Eliminar
-                                                            </button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th hidden="true">id</th>
-                                                <th>Código</th>
-                                                <th>Imágen</th>
-                                                <th>Modelo</th>
-                                                <th>Procucto</th>
-                                                <th hidden="true">id_fabricante</th>
-                                                <th>Fabricante</th>
-                                                <th>Estado</th>
-                                                <th>Stock</th>
-                                                <th>Precio</th>
+                                                    <c:choose>
+                                                        <c:when test="${ver.estado=='A'}">
+                                                            Activo 
+                                                            <br />
+                                                        </c:when>    
+                                                        <c:otherwise>
+                                                            Inactivo 
+                                                            <br />
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </td>
+                                                <td>${ver.stock}</td>
+                                                <td>$ ${ver.precio_unitario}</td>
+                                                <td>
+                                                    <a href="productos?action=showEditar&id=${ver.id_producto}">
+                                                        <button type="button" class="btn btn-default btn-sm">
+                                                            <span class="glyphicon glyphicon-edit"></span> Editar
+                                                        </button>
+                                                    </a>                                                       
+                                                </td>
+                                                <td>
+                                                    <a href="productos?action=eliminar&id=${ver.id_producto}">
+                                                        <button type="button" class="btn btn-default btn-sm">
+                                                            <span class="glyphicon glyphicon-remove-circle"></span> Eliminar
+                                                        </button>
+                                                    </a>
+                                                </td>
                                             </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-                                <!-- /.box-body -->
+                                        </c:forEach>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th hidden="true">id</th>
+                                            <th>Código</th>
+                                            <th>Modelo</th>
+                                            <th>Procucto</th>
+                                            
+                                            <th>Fabricante</th>
+                                            <th>Estado</th>
+                                            <th>Stock</th>
+                                            <th>Precio</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
                             </div>
-                            <!-- /.box -->
+                            <!-- /.box-body -->
                         </div>
-                        <!-- /.col -->
+                        <!-- /.box -->
                     </div>
-                    <!-- /.row -->
-                </section>
-                <!-- /.content -->
-            </div>
-            <!-- /.content-wrapper -->
-            <footer class="main-footer">
-                <div class="pull-right hidden-xs">
-                    <b>Version</b> 2.4.12
+                    <!-- /.col -->
                 </div>
-                <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">Java 13 </a>.</strong> All rights
-                reserved.
-            </footer>
-
-            <!-- Control Sidebar -->
-            <aside class="control-sidebar control-sidebar-dark">
-                <!-- Create the tabs -->
-                <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                    <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-                    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <!-- Home tab content -->
-                    <div class="tab-pane" id="control-sidebar-home-tab">
-                        <h3 class="control-sidebar-heading">Recent Activity</h3>
-                        <ul class="control-sidebar-menu">
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                                        <p>Will be 23 on April 24th</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon fa fa-user bg-yellow"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-                                        <p>New phone +1(800)555-1234</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-                                        <p>nora@example.com</p>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-                                    <div class="menu-info">
-                                        <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-                                        <p>Execution time 5 seconds</p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- /.control-sidebar-menu -->
-
-                        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                        <ul class="control-sidebar-menu">
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Custom Template Design
-                                        <span class="label label-danger pull-right">70%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Update Resume
-                                        <span class="label label-success pull-right">95%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Laravel Integration
-                                        <span class="label label-warning pull-right">50%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">
-                                    <h4 class="control-sidebar-subheading">
-                                        Back End Framework
-                                        <span class="label label-primary pull-right">68%</span>
-                                    </h4>
-
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- /.control-sidebar-menu -->
-
-                    </div>
-                    <!-- /.tab-pane -->
-                    <!-- Stats tab content -->
-                    <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-                    <!-- /.tab-pane -->
-                    <!-- Settings tab content -->
-                    <div class="tab-pane" id="control-sidebar-settings-tab">
-                        <form method="post">
-                            <h3 class="control-sidebar-heading">General Settings</h3>
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Report panel usage
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Some information about this general settings option
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Allow mail redirect
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Other sets of options are available
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Expose author name in posts
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-
-                                <p>
-                                    Allow the user to show his name in blog posts
-                                </p>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Show me as online
-                                    <input type="checkbox" class="pull-right" checked>
-                                </label>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Turn off notifications
-                                    <input type="checkbox" class="pull-right">
-                                </label>
-                            </div>
-                            <!-- /.form-group -->
-
-                            <div class="form-group">
-                                <label class="control-sidebar-subheading">
-                                    Delete chat history
-                                    <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-                                </label>
-                            </div>
-                            <!-- /.form-group -->
-                        </form>
-                    </div>
-                    <!-- /.tab-pane -->
-                </div>
-            </aside>
-            <!-- /.control-sidebar -->
-            <!-- Add the sidebar's background. This div must be placed
-                 immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
         </div>
-        <!-- ./wrapper -->
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.4.12
+            </div>
+            <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">Java 13 </a>.</strong> All rights
+            reserved.
+        </footer>
 
-        <!-- jQuery 3 -->
-        <script src="bower_components/jquery/dist/jquery.min.js"></script>
-        <!-- Bootstrap 3.3.7 -->
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- DataTables -->
-        <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-        <!-- SlimScroll -->
-        <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-        <!-- FastClick -->
-        <script src="bower_components/fastclick/lib/fastclick.js"></script>
-        <!-- AdminLTE App -->
-        <script src="dist/js/adminlte.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js"></script>
-        <!-- page script -->
-        <script>
-            $(function () {
-                $('#example1').DataTable()
-                $('#example2').DataTable({
-                    'paging': true,
-                    'lengthChange': false,
-                    'searching': false,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Create the tabs -->
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+                <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- Home tab content -->
+                <div class="tab-pane" id="control-sidebar-home-tab">
+                    <h3 class="control-sidebar-heading">Recent Activity</h3>
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                                    <p>Will be 23 on April 24th</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="menu-icon fa fa-user bg-yellow"></i>
+
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+
+                                    <p>New phone +1(800)555-1234</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+
+                                    <p>nora@example.com</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="menu-icon fa fa-file-code-o bg-green"></i>
+
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+
+                                    <p>Execution time 5 seconds</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
+
+                    <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Custom Template Design
+                                    <span class="label label-danger pull-right">70%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Update Resume
+                                    <span class="label label-success pull-right">95%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Laravel Integration
+                                    <span class="label label-warning pull-right">50%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h4 class="control-sidebar-subheading">
+                                    Back End Framework
+                                    <span class="label label-primary pull-right">68%</span>
+                                </h4>
+
+                                <div class="progress progress-xxs">
+                                    <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.control-sidebar-menu -->
+
+                </div>
+                <!-- /.tab-pane -->
+                <!-- Stats tab content -->
+                <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+                <!-- /.tab-pane -->
+                <!-- Settings tab content -->
+                <div class="tab-pane" id="control-sidebar-settings-tab">
+                    <form method="post">
+                        <h3 class="control-sidebar-heading">General Settings</h3>
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Report panel usage
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+
+                            <p>
+                                Some information about this general settings option
+                            </p>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Allow mail redirect
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+
+                            <p>
+                                Other sets of options are available
+                            </p>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Expose author name in posts
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+
+                            <p>
+                                Allow the user to show his name in blog posts
+                            </p>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <h3 class="control-sidebar-heading">Chat Settings</h3>
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Show me as online
+                                <input type="checkbox" class="pull-right" checked>
+                            </label>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Turn off notifications
+                                <input type="checkbox" class="pull-right">
+                            </label>
+                        </div>
+                        <!-- /.form-group -->
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">
+                                Delete chat history
+                                <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+                            </label>
+                        </div>
+                        <!-- /.form-group -->
+                    </form>
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+        </aside>
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery 3 -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': false,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
             })
-        </script>
-    </body>
+        })
+    </script>
+</body>
 </html>

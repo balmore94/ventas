@@ -139,6 +139,25 @@ public class ContactosDao {
         }
     }
     
+    public List<ContactosBean>selectContactos(int id){
+        String sql = "SELECT contactos.id_contacto, contactos.nombre, contactos.apellido FROM contactos WHERE contactos.id_tipo_contacto = ?";
+        try {
+            PreparedStatement ps = conn.conectar().prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            List<ContactosBean> select = new LinkedList<>();
+            ContactosBean ctb;
+            while(rs.next()){
+                ctb = new ContactosBean(rs.getInt("id_contacto"));
+                ctb.setNombre(rs.getString("nombre"));
+                ctb.setApellido(rs.getString("apellido"));
+                select.add(ctb);
+            }
+            return select;
+        } catch (Exception e) {
+            return null;
+        }
+    }
     public boolean eliminar(int id){
         String sql = "DELETE FROM contactos WHERE id_contacto = ?";
         try {

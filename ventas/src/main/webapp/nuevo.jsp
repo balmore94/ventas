@@ -81,28 +81,20 @@
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar">
+             <aside class="main-sidebar">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
-                    <!-- Sidebar user panel -->
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="dist/img/admin.png" class="img-circle" alt="User Image">
-                        </div>
-                        <div class="pull-left info">
-                            <p>Usuario demo</p>
-                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                        </div>
-                    </div>
+
+                    <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu">
+                    <ul class="sidebar-menu" data-widget="tree">
                         <li class="header">MENÚ</li>
                         <li class="">
-                            <a href="index.php">
+                            <a href="index.jsp">
                                 <i class="fa fa-home"></i> <span>Inicio</span> 
                             </a>
-
                         </li>
+
                         <li class=" treeview">
                             <a href="#">
                                 <i class="fa fa-truck"></i>
@@ -110,21 +102,21 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class=""><a href="new_purchase.php"><i class="glyphicon glyphicon-shopping-cart"></i> Nueva compra</a></li>
-                                <li class=""><a href="purchase_list.php"><i class="glyphicon glyphicon-th-list"></i> Historial de compras</a></li>
+                                <li class=""><a href="compras?action=nuevaCompra&tipo=1"><i class="glyphicon glyphicon-shopping-cart"></i> Nueva compra</a></li>
+                                <li class=""><a href="compras?action=listaCompras"><i class="glyphicon glyphicon-th-list"></i> Historial de compras</a></li>
                             </ul>
                         </li>
                         <li class="">
-                            <a href="products.php">
+                            <a href="productos?action=allProductos">
                                 <i class="glyphicon glyphicon-th-large"></i> <span>Productos</span>
                             </a>
                         </li>
                         <li class="">
-                            <a href="manufacturers.php">
+                            <a href="fabricante?action=allFabricantes">
                                 <i class="glyphicon glyphicon-tag"></i> <span>Fabricantes</span>
                             </a>
                         </li>
-                        <li class="active treeview">
+                        <li class=" treeview">
                             <a href="#">
                                 <i class="fa fa-user"></i>
                                 <span>Contactos</span>
@@ -132,9 +124,9 @@
                             </a>
                             <ul class="treeview-menu">
 
-                                <li class="active"><a href="customers.php"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
+                                <li class=""><a href="contactos?action=allClientes"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
 
-                                <li class=""><a href="supplier.php"><i class="glyphicon glyphicon-briefcase"></i> Proveedores</a></li>
+                                <li class=""><a href="contactos?action=allProveedores"><i class="glyphicon glyphicon-briefcase"></i> Proveedores</a></li>
 
                             </ul>
                         </li>
@@ -144,49 +136,11 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class=""><a href="new_sale.php"><i class="fa fa-cart-plus"></i> Nueva venta</a></li>
-                                <li class=""><a href="manage_invoice.php"><i class="glyphicon glyphicon-list-alt"></i> Administrar facturas</a></li>
+                                <li class=""><a href="#"><i class="fa fa-cart-plus"></i> Nueva venta</a></li>
+                                <li class=""><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Administrar facturas</a></li>
                             </ul>
                         </li>
-                        <li class=" treeview">
-                            <a href="#">
-                                <i class="glyphicon glyphicon-signal"></i> <span>Reportes</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class=""><a href="sales_report.php"><i class="fa fa-bar-chart"></i> Reporte de ventas</a></li>
-                                <li class=""><a href="purchases_report.php"><i class="fa fa-line-chart"></i> Reporte de compras</a></li>
-                                <li class=""><a href="inventory_report.php"><i class="fa fa-bar-chart"></i> Reporte de inventario</a></li>
-                            </ul>
-                        </li>
-                        <li class=" treeview">
-                            <a href="#">
-                                <i class="fa fa-wrench"></i> <span>Configuración</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class=""><a href="business_profile.php"><i class="glyphicon glyphicon-briefcase"></i> Perfil de la empresa</a></li>
-                                <li class=""><a href="currencies.php"><i class="fa fa-usd"></i> Monedas</a></li>
-                                <li class=""><a href="taxes.php"><i class="fa fa-align-justify"></i> Impuestos</a></li>
-                                <li class=""><a href="templates.php"><i class="fa fa-file-pdf-o"></i> Plantillas</a></li>
-                            </ul>
-                        </li>
-                        <li class=" treeview">
-                            <a href="#">
-                                <i class="fa fa-lock"></i> <span>Administrar accesos</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-
-                                <li class=""><a href="group_list.php"><i class="glyphicon glyphicon-briefcase"></i> Grupos de usuarios</a></li>
-
-                                <li class=""><a href="user_list.php"><i class="fa fa-users"></i> Usuarios</a></li>
-
-                            </ul>
-                        </li>
-
-
-                    </ul>
+        
                 </section>
                 <!-- /.sidebar -->
             </aside>

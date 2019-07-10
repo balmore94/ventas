@@ -28,9 +28,7 @@ public class EmpresaDao {
             EmpresaBean emb;
             while(rs.next()){
                 emb = new EmpresaBean(rs.getInt("id_empresa"));
-                System.out.println(rs.getInt("id_empresa"));
                 emb.setNombre_empresa(rs.getString("nombre_empresa"));
-                System.out.println(rs.getString("nombre_empresa"));
                 listaEmpresa.add(emb);
             }
             return listaEmpresa;
