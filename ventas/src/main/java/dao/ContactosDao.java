@@ -151,11 +151,12 @@ public class ContactosDao {
         }
     }
     
-    public List <ContactosBean> findById(int id){
-        String sql = "SELECT * from contactos WHERE id_contacto = ?";
+    public List <ContactosBean> findById(int id, int tipo){
+        String sql = "SELECT contactos.id_contacto, contactos.id_tipo_contacto, tipo_contacto.tipo, contactos.id_empresa, empresa.nombre_empresa, contactos.nombre, contactos.apellido, contactos.email, contactos.telefono FROM contactos INNER JOIN empresa ON contactos.id_empresa = empresa.id_empresa INNER JOIN tipo_contacto ON contactos.id_tipo_contacto = tipo_contacto.id_tipo WHERE contactos.id_contacto = ? AND contactos.id_tipo_contacto = ?";
         try {
             PreparedStatement ps = conn.conectar().prepareStatement(sql);
             ps.setInt(1, id);
+            ps.setInt(2, tipo);
             ResultSet rs = ps.executeQuery();
             List<ContactosBean> lista = new LinkedList<>();
             ContactosBean ctb;
@@ -165,7 +166,9 @@ public class ContactosDao {
                 EmpresaBean emb;
                 ctb = new ContactosBean(rs.getInt("id_contacto"));
                 tp = new TipoContactoBean(rs.getInt("id_tipo_contacto"));
+                tp.setTipo(rs.getString("tipo"));
                 emb = new EmpresaBean(rs.getInt("id_empresa"));
+                emb.setNombre_empresa(rs.getString("nombre_empresa"));
 
                 
                 ctb.setId_tipo_contacto(tp);
@@ -174,7 +177,7 @@ public class ContactosDao {
                 ctb.setApellido(rs.getString("apellido"));
                 ctb.setEmail(rs.getString("email"));
                 ctb.setTelefono(rs.getString("telefono"));
-                ctb.setFecha_ingreso(rs.getDate("fecha_ingreso"));
+                
                 lista.add(ctb);
             }
             return lista;

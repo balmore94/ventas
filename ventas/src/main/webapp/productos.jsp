@@ -228,7 +228,7 @@
                                             <tr>
                                                 <th hidden="true">id</th>
                                                 <th>Código</th>
-                                                <th>Imágen</th>
+                                                <th hidden="true">Imágen</th>
                                                 <th>Modelo</th>
                                                 <th>Procucto</th>
                                                 <th hidden="true">id_fabricante</th>
@@ -243,7 +243,7 @@
                                                 <tr>
                                                     <td hidden="true">${ver.id_producto}</td>
                                                     <td>${ver.codigo}</td>
-                                                    <td>${ver.imagen}</td>
+                                                    
                                                     <td>${ver.modelo}</td>
                                                     <td>${ver.nombre}</td>
                                                     <td hidden="true">${ver.id_fabricante.id_fabricante}</td>
@@ -256,7 +256,9 @@
                                                             <button type="button" class="btn btn-default btn-sm">
                                                                 <span class="glyphicon glyphicon-edit"></span> Editar
                                                             </button>
-                                                        </a>
+                                                        </a>                                                       
+                                                    </td>
+                                                    <td>
                                                         <a href="productos?action=eliminar&id=${ver.id_producto}">
                                                             <button type="button" class="btn btn-default btn-sm">
                                                                 <span class="glyphicon glyphicon-remove-circle"></span> Eliminar

@@ -22,9 +22,9 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${lista}" var="ver">
+                <c:forEach items="${listaEmpresa}" var="ver"><c:forEach items="${listaEmpresa}" var="ver">
                 <tr>
-                    <td>${ver.id_contacto}</td>
+                    <td>${ver.nombre_empresa}</td>
                    
                 </tr>
                 </c:forEach>

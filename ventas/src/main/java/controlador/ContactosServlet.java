@@ -7,6 +7,7 @@ package controlador;
 
 import conexion.Conexion;
 import dao.ContactosDao;
+import dao.EmpresaDao;
 import dao.PaisDao;
 import dao.TipoContactoDao;
 import java.io.IOException;
@@ -187,17 +188,22 @@ public class ContactosServlet extends HttpServlet {
 
     protected void mostrarEditar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int idContacto = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
+        int tipo = Integer.parseInt(request.getParameter("tipo"));
+        EmpresaDao emp = new EmpresaDao(conn);
         TipoContactoDao tp = new TipoContactoDao(conn);
         List<TipoContactoBean> listaTipo = tp.findAllTipo();
+        List<EmpresaBean> listaEmpresa = emp.allEmpresa();
         
-  
-        List<ContactosBean> lista = ctd.findById(idContacto) ;
         
-        request.setAttribute("listaTipo", listaTipo);
+        List<ContactosBean> lista = ctd.findById(id, tipo);
         request.setAttribute("lista", lista);
-        //System.out.println(lista);
-        rd = request.getRequestDispatcher("actualizarContacto.jsp");
+        request.setAttribute("listaTipo", listaTipo);
+        request.setAttribute("listaEmpresa", listaEmpresa);
+        
+        
+        //System.out.println(listaEmpresa);
+        rd = request.getRequestDispatcher("editarContacto.jsp");
         rd.forward(request, response);
 
     }

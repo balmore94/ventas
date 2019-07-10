@@ -4,7 +4,7 @@ public class ProductosBean {
     private int id_producto;
     private FabricanteBean id_fabricante;
     private String codigo;
-    private String imagen;
+    private String descripcion;
     private String modelo;
     private String nombre;
     private String estado;
@@ -45,14 +45,12 @@ public class ProductosBean {
         this.codigo = codigo;
     }
 
-    
-
-    public String getImagen() {
-        return imagen;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getModelo() {

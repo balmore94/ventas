@@ -20,7 +20,7 @@ public class ProductosDao {
     }
     /*Metodo que retorna todos los productos*/
     public List<ProductosBean>allProductos(){
-        String sql = "SELECT productos.id_producto,  productos.codigo, productos.imagen, productos.modelo, productos.nombre, productos.id_fabricante, fabricante.nombre_fabricante, productos.estado, productos.stock, productos.precio_unitario FROM productos INNER JOIN fabricante ON productos.id_fabricante = fabricante.id_fabricante";
+        String sql = "SELECT productos.id_producto, productos.codigo, productos.descripcion, productos.modelo, productos.nombre, productos.id_fabricante, fabricante.nombre_fabricante, productos.estado, productos.stock, productos.precio_unitario FROM productos INNER JOIN fabricante ON productos.id_fabricante = fabricante.id_fabricante";
         try {
             PreparedStatement ps = conn.conectar().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -33,7 +33,7 @@ public class ProductosDao {
                 fa.setNombre_fabricante(rs.getString("nombre_fabricante"));
                 
                 pt.setCodigo(rs.getString("codigo"));
-                pt.setImagen(rs.getString("imagen"));
+                
                 pt.setModelo(rs.getString("modelo"));
                 pt.setNombre(rs.getString("nombre"));
                 pt.setId_fabricante(fa);
@@ -60,7 +60,7 @@ public class ProductosDao {
             ps.setInt(1, ptb.getId_producto());
             ps.setInt(2, fab.getId_fabricante());
             ps.setString(3, ptb.getCodigo());
-            ps.setString(4, ptb.getImagen());
+            ps.setString(4, ptb.getDescripcion());
             ps.setString(5, ptb.getModelo());
             ps.setString(6, ptb.getNombre());
             ps.setString(7, ptb.getEstado());
@@ -78,7 +78,7 @@ public class ProductosDao {
     }
     
     public List<ProductosBean> findById(int id){
-        String sql = "SELECT productos.id_producto, productos.id_fabricante, fabricante.nombre_fabricante, productos.codigo, productos.imagen, productos.modelo, productos.nombre, productos.estado, productos.stock, productos.precio_unitario, productos.precio_venta, productos.ganancia, productos.presentacion FROM productos INNER JOIN fabricante ON productos.id_fabricante = fabricante.id_fabricante WHERE id_producto = ?";
+        String sql = "SELECT productos.id_producto, productos.id_fabricante, fabricante.nombre_fabricante, productos.codigo, productos.descripcion, productos.modelo, productos.nombre, productos.estado, productos.stock, productos.precio_unitario, productos.precio_venta, productos.ganancia, productos.presentacion FROM productos INNER JOIN fabricante ON productos.id_fabricante = fabricante.id_fabricante WHERE id_producto = ?";
         try {
             PreparedStatement ps = conn.conectar().prepareStatement(sql);
             ps.setInt(1, id);
@@ -92,6 +92,7 @@ public class ProductosDao {
                 fab.setNombre_fabricante(rs.getString("nombre_fabricante"));
                 ptb.setId_fabricante(fab);
                 ptb.setCodigo(rs.getString("codigo"));
+                ptb.setDescripcion(rs.getString("descripcion"));
                 ptb.setModelo(rs.getString("modelo"));
                 ptb.setNombre(rs.getString("nombre"));
                 ptb.setEstado(rs.getString("estado"));

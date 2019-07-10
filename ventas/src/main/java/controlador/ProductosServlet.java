@@ -86,14 +86,14 @@ public class ProductosServlet extends HttpServlet {
         String modelo = request.getParameter("modelo");
         String nombre_producto = request.getParameter("nombre_producto");
         String presentacion = request.getParameter("presentacion");
-        //String desc = request.getParameter("descripcion");
+        String desc = request.getParameter("descripcion");
         String estado = request.getParameter("estado");
         double precio_unitario = Double.valueOf(request.getParameter("precio"));
 
         double ganancia = Double.valueOf(request.getParameter("ganancia"));
         double precio_venta = Double.valueOf(request.getParameter("precio_venta"));
         int stock = Integer.parseInt(request.getParameter("stock"));
-        String imagen = request.getParameter("imagen");
+        
 
         ProductosBean ptb = new ProductosBean(0);
 
@@ -101,7 +101,7 @@ public class ProductosServlet extends HttpServlet {
 
         ptb.setId_fabricante(fab);
         ptb.setCodigo(codigo_producto);
-        ptb.setImagen(imagen);
+        ptb.setDescripcion(desc);
         ptb.setModelo(modelo);
         ptb.setNombre(nombre_producto);
         ptb.setEstado(estado);
