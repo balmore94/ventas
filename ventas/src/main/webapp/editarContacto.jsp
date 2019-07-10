@@ -207,11 +207,11 @@
                 <section class="content">
                     <div class="row">
 
-                       
+
                         <!-- /.col -->
                         <div class="col-md-9">
                             <c:forEach items="${lista}" var="ver">
-                                <form class="form-horizontal" method="POST" action="productos?action=updateProducto">
+                                <form class="form-horizontal" method="POST" action="contactos?action=updateContactos">
 
                                     <div class="nav-tabs-custom">
                                         <ul class="nav nav-tabs">
@@ -220,7 +220,7 @@
                                         <div class="tab-content">
 
                                             <div class="tab-pane active" id="details">
-                                                
+
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label">Tipo Contacto</label>
 
@@ -249,57 +249,31 @@
                                                     <label class="col-sm-2 control-label">Nombre Contacto</label>
 
                                                     <div class="col-sm-4">
-                                                        <div class="input-group">
-                                                            <input class="form-control" value="${ver.nombre}" name="precio">
-                                                        </div>
+                                                        <input class="form-control" value="${ver.nombre}"/>
                                                     </div>
-                                                    <label class="col-sm-2 control-label">Ganancia</label>
+                                                    <label class="col-sm-2 control-label">Empresa</label>
 
                                                     <div class="col-sm-4">
-                                                        <div class="input-group">
-                                                            <div class="input-group-addon">
-                                                                <i class="fa fa-usd"></i>
-                                                            </div>
-                                                            <input class="form-control" value="" name="ganancia">
-                                                        </div>
+                                                        <input class="form-control" value="${ver.apellido}"/>
                                                     </div>
                                                 </div>
-
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Precio de venta</label>
+                                                    <label class="col-sm-2 control-label">Email Contacto</label>
 
                                                     <div class="col-sm-4">
-                                                        <div class="input-group">
-                                                            <div class="input-group-addon">
-                                                                <i class="fa fa-usd"></i>
-                                                            </div>
-                                                            <input class="form-control" value="" name="precio_venta">
-                                                        </div>
+                                                        <input class="form-control" value="${ver.email}"/>
                                                     </div>
-
-                                                    <label class="col-sm-2 control-label">Stock inicial</label>
+                                                    <label class="col-sm-2 control-label">Telefono</label>
 
                                                     <div class="col-sm-4">
-                                                        <div class="input-group">
-                                                            <div class="input-group-addon">
-                                                                <i class="fa fa-th-large" aria-hidden="true"></i>
-                                                            </div>
-                                                            <input type="text" class="form-control" value="" name="stock">
-                                                        </div>
+                                                        <input class="form-control" value="${ver.telefono}"/>
                                                     </div>
                                                 </div>
-                                                <!--<div class="form-group">
-                                                    <label for="image" class="col-sm-2 control-label">Imagen</label>
-    
-                                                    <div class="col-sm-6">
-                                                        <input type="file"  class='form-control' name="im" id="imagefile">
-                                                        <input class="form-control" name="imagen"/>
-                                                    </div>
-                                                </div>-->
+
 
                                                 <div class="form-group">
                                                     <div class="col-sm-offset-2 col-sm-6">
-                                                        <button type="submit" class="btn btn-primary actualizar_datos">Guardar datos</button>
+                                                        <button type="submit" class="btn btn-primary actualizar_datos">Actualizar datos</button>
                                                     </div>
                                                 </div>
 
